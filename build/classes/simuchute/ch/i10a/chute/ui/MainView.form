@@ -27,7 +27,7 @@
               <Component id="jPanel1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -35,11 +35,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="jPanel1" max="32767" attributes="0"/>
-                  <Component id="jPanel2" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jPanel1" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPanel2" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,25 +76,20 @@
                       </Group>
                   </Group>
               </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="windDirection" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="windDirectionValue" pref="0" max="32767" attributes="0"/>
-                      </Group>
                       <Group type="102" attributes="0">
                           <Component id="altitudeLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="jSlider1" min="-2" pref="91" max="-2" attributes="0"/>
+                          <Component id="altitude" min="-2" pref="91" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="windDirection" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="windDirectionValue" pref="131" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="43" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="altitudeValue" min="-2" max="-2" attributes="0"/>
@@ -106,6 +101,11 @@
                       </Group>
                   </Group>
               </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -114,7 +114,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="altitudeValue" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
+                      <Component id="altitude" min="-2" max="-2" attributes="0"/>
                       <Component id="altitudeLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -139,7 +139,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="361" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -150,11 +150,14 @@
             <Property name="text" type="java.lang.String" value="Flugh&#xf6;he"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSlider" name="jSlider1">
+        <Component class="javax.swing.JSlider" name="altitude">
           <Properties>
             <Property name="maximum" type="int" value="10000"/>
             <Property name="minimum" type="int" value="3000"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="altitudeStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="altitudeValue">
           <Properties>
@@ -200,6 +203,9 @@
           <Properties>
             <Property name="maximum" type="int" value="359"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="windDirectionValueStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="windDirectionValueLabel">
           <Properties>
@@ -229,16 +235,18 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jLabel2" min="-2" pref="1028" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="605" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel2" pref="586" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -249,7 +257,6 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/simuchute/ch/i10a/chute/ui/resources/landscape.jpg"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="jLabel2"/>
           </Properties>
         </Component>
       </SubComponents>
