@@ -21,8 +21,10 @@ public class swp2012_ode3 extends linalg4_4
 
     /**     Beispiel 3: Flug einer Kugel  mit Reibung im Wind   */ 
     /**     (Bewegung in einer Ebene)  */ 
-    /**     Anfangswerte fŸr Testlauf:  zAnfang={10, 0, 5, 12} */ 
-    
+    /**     Anfangswerte fŸr Testlauf:  zAnfang={5000, 100, 0, 0} */ 
+    static double toeffnen = 0.2;
+    static double toffen = 0.22;
+    static double r=0;
     public double[] w (double t, double[] z)
     {
         /** Zustandsgršssen **/
@@ -36,7 +38,11 @@ public class swp2012_ode3 extends linalg4_4
         
         /** Systemgršssen **/   
         double g = 10;        // Gravitations Beschleunigung
-        double r = 0.002;     // Reibungskoeffizient
+        
+        r=0.01;
+		//r=widerstand(t);
+		
+        //r=0.2;
             
         /** Einflussgršssen **/
         /** Funktion wind **/   
@@ -58,15 +64,29 @@ public class swp2012_ode3 extends linalg4_4
        
         return res;
     }
+    
+    public static double widerstand(double t){
+		
+		if(t>=toeffnen && t<=toffen){
+			r = r + 0.0001;
+		}
+		System.out.println(r);
+		return r;
+		
+	}
         
     public double[] wind (double t, double[] z)
     { 
         double[]res = new double[4];
-             
-        res[0] =  20;//wind rechts
-        res[1] =  5;// wind oben
-         res[0] =  -10;
-        res[1] =  0;
+        if(t>1.8){
+        	res[0] =  0;//wind rechts
+            res[1] =  0;// wind oben
+        	
+        }
+        else{
+        	res[0] =  0;//wind rechts
+            res[1] =  0;// wind oben
+        }
        
        
         return res;
