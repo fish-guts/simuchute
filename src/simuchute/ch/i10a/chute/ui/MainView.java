@@ -4,8 +4,6 @@
  */
 package simuchute.ch.i10a.chute.ui;
 
-import javax.swing.JLabel;
-
 /**
  *
  * @author Fish-Guts
@@ -50,7 +48,7 @@ public class MainView extends javax.swing.JFrame {
 
         altitudeLabel.setText("Flughöhe");
 
-        altitude.setMaximum(10000);
+        altitude.setMaximum(9680);
         altitude.setMinimum(3000);
         altitude.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -207,15 +205,6 @@ public class MainView extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /*
-         * Set the Nimbus look and feel
-         */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the
-         * default look and feel. For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -232,17 +221,15 @@ public class MainView extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /*
-         * Create and display the form
-         */
+        // Hauptfenster erstellen
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
                 new MainView().setVisible(true);
             }
         });
+        MovingObject mv = new MovingObject();
+        mv.init();
     }
 
     public void drawCoordinateSystem() {

@@ -54,8 +54,6 @@ public class Flugzeug {
 		double counter = tstart;
 		double yKO = 0;
 		flugbahn = new double[(int) t][2];
-		
-		
 		while(counter < t){
 			xKO = geschwindigkeit*counter;
 			flugbahn[(int) counter][0] = xKO;
@@ -67,8 +65,7 @@ public class Flugzeug {
 	}
 	
 	public double[][] getFlugbahn(){
-		
-		return flugbahn;
+            return flugbahn;
 	}
 	
 }

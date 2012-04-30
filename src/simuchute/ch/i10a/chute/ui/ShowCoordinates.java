@@ -69,7 +69,6 @@ public class ShowCoordinates {
         ShowCoordinates showCoo = new ShowCoordinates();
         showCoo.build(f.getContentPane());
         f.pack();
-
     }
 
     public static class CoordinateExample extends JComponent implements

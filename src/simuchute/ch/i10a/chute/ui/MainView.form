@@ -153,7 +153,7 @@
         </Component>
         <Component class="javax.swing.JSlider" name="altitude">
           <Properties>
-            <Property name="maximum" type="int" value="10000"/>
+            <Property name="maximum" type="int" value="9680"/>
             <Property name="minimum" type="int" value="3000"/>
           </Properties>
           <Events>
