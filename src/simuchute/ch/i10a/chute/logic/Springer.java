@@ -8,13 +8,12 @@
 package simuchute.ch.i10a.chute.logic;
 
 //Zugang zu  Methoden aus der Linearen Algebra
-import swp2012_ode.linalg4_4;
 
 public class Springer extends linalg4_4  {
 
 /***********************************************************************/
 /* Funktionen zur Definition  von Differentialgleichungen z'=w(t,z)    */
-/*            fŸr Funktion z=f(t)                                      */
+/*            fï¿½r Funktion z=f(t)                                      */
 /***********************************************************************/
 
 	private double r;
@@ -37,32 +36,32 @@ public class Springer extends linalg4_4  {
     
     public double[] w (double t, double[] z)
     {
-        /** Zustandsgršssen **/
+        /** Zustandsgrï¿½ssen **/
         /** z[0] = x-Komponente des Positionsvektors        **/
         /** z[1] = y-Komponente des Positionsvektors        **/
         /** z[2] = x-Komponente des Geschwindigkeitsvektors **/
         /** z[3] = y-Komponente des Geschwindigkeitsvektors **/
         
-        /** Ableitungen der Zustandsgršssen **/
-        double[]res = new double[4];//5er array, stšrgršssen abspeichern
+        /** Ableitungen der Zustandsgrï¿½ssen **/
+        double[]res = new double[4];//5er array, stï¿½rgrï¿½ssen abspeichern
         
-        /** Systemgršssen **/   
+        /** Systemgrï¿½ssen **/   
         double g = 10;        // Gravitations Beschleunigung
         
         r=widerstand.calcWiderstand(t);
 	
-        /** Einflussgršssen **/
+        /** Einflussgrï¿½ssen **/
         /** Funktion wind **/   
              
-        /** Hilfssgršssen **/
-        /** u = Geschwindigkeit Ball gegenŸber bewegter Luft **/     
+        /** Hilfssgrï¿½ssen **/
+        /** u = Geschwindigkeit Ball gegenï¿½ber bewegter Luft **/     
         double[]u = new double[2];
         double uBetrag;
         u[0] =  z[2]-wind(t,z)[0];
         u[1] =  z[3]-wind(t,z)[1];
         uBetrag = Math.sqrt(u[0]*u[0] +  u[1]*u[1]);
         
-        /** Berechnung derAbleitungen der Zustandsgršssen **/
+        /** Berechnung derAbleitungen der Zustandsgrï¿½ssen **/
         res[0] =  z[2];
         res[1] =  z[3];
         
@@ -77,7 +76,7 @@ public class Springer extends linalg4_4  {
     	double yKO = z[1]; //yKoordinate auslesen
     	double[] res = new double[4];
     	
-    	//je nach Hšhe wird ein anderer Wind gesetzt
+    	//je nach Hï¿½he wird ein anderer Wind gesetzt
     	if(yKO>500 && yKO<1000){
     		
     		res[0] = 30;
@@ -131,7 +130,7 @@ public class Springer extends linalg4_4  {
         
         int i, n;
         
-        // Anpassung der Schrittweite an die LŠnge des Integrationsintervalls
+        // Anpassung der Schrittweite an die Lï¿½nge des Integrationsintervalls
         n = (int) (Math.round( (Math.abs (tEnde-tAnfang) / h)));
         h = (tEnde-tAnfang) / n;             
         
@@ -175,7 +174,7 @@ public class Springer extends linalg4_4  {
 /* Berechnungen von Wertetabellen                                      */ 
 /***********************************************************************/
     
-    /** erstellen einer gleichabstŠndigen Tabelle t[] = {t0, t1, ... tn} */         
+    /** erstellen einer gleichabstï¿½ndigen Tabelle t[] = {t0, t1, ... tn} */         
     
     public double[] tTable  ( double t0, double t1, double tn) 
     {     
@@ -190,8 +189,8 @@ public class Springer extends linalg4_4  {
         return t;
     }
         
-    /** erstellen einer Wertetabelle  y=f(t) fŸr die
-        Lšsung des Anfangswertproblems dy/dt=w(t,y), f(tAnfang)=yAnfang   */  
+    /** erstellen einer Wertetabelle  y=f(t) fï¿½r die
+        Lï¿½sung des Anfangswertproblems dy/dt=w(t,y), f(tAnfang)=yAnfang   */  
          
     public double[][] yTable  ( double[] t, double tAnfang,double[] yAnfang, double h) 
     {       
@@ -225,8 +224,8 @@ public class Springer extends linalg4_4  {
       
         
     /** erstellen einer Wertetabelle t --> y=f(t) 
-        mit einer gleichabstŠndigen Tabelle t[] = {t0, t1, ... tn} 
-        fŸr die Lšsung des Anfangswertproblems dy/dt=w(t,y), f(tAnfang)=yAnfang   */  
+        mit einer gleichabstï¿½ndigen Tabelle t[] = {t0, t1, ... tn} 
+        fï¿½r die Lï¿½sung des Anfangswertproblems dy/dt=w(t,y), f(tAnfang)=yAnfang   */  
                 
     public double[][] fTable  ( double t0, double t1, double tn, double tAnfang, double[] yAnfang, double h) 
     {   
