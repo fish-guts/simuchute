@@ -18,6 +18,7 @@ public class ShowCoordinates {
     private JLabel label;
     private static JLabel currentPosition;
     private Point point1, point2;
+    static double pos[][];
 
     private void build(Container cont) {
         cont.setLayout(new BoxLayout(cont, BoxLayout.LINE_AXIS));
@@ -34,7 +35,7 @@ public class ShowCoordinates {
     public void update(int x, int y) {
         if (x < 0 || y < 0) {
             point2 = null;
-            updateLabel();
+           // updateLabel();
             return;
         }
         if (point2 == null) {
@@ -47,12 +48,12 @@ public class ShowCoordinates {
 
     public void updatePoint1(Point pt) {
         point1 = pt;
-        updateLabel();
+        //updateLabel();
     }
 
     public void resetLabel() {
         point2 = null;
-        updateLabel();
+        //updateLabel();
     }
 
     protected void updateLabel() {
@@ -64,8 +65,7 @@ public class ShowCoordinates {
         currentPosition.setText(msg);
     }
 
-    static void create(JFrame f,JLabel curPos) {
-        currentPosition = curPos;
+    static void create(JFrame f) {
         ShowCoordinates showCoo = new ShowCoordinates();
         showCoo.build(f.getContentPane());
         f.pack();
@@ -101,7 +101,6 @@ public class ShowCoordinates {
                 g.fillRect(point.x - 4, point.y - 4, 8, 8);
             }
         }
-
         private void drawGrid(Graphics g, int grid) {
             Insets insets = getInsets();
             int X1 = insets.left;
@@ -134,7 +133,6 @@ public class ShowCoordinates {
         }
 
         public void mouseMoved(MouseEvent event) {
-            showCoo.update(event.getX(), event.getY());
         }
 
         public void mouseExited(MouseEvent event) {

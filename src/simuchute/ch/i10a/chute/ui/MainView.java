@@ -228,13 +228,17 @@ public class MainView extends javax.swing.JFrame {
                 new MainView().setVisible(true);
             }
         });
-        MovingObject mv = new MovingObject();
-        mv.init();
+
     }
 
+    private static void drawResult(double[][] coordinates) {
+        
+    }
     public void drawCoordinateSystem() {
         //mainContainer.setBackground(Color.WHITE); // das Koordinatensystem soll einen weissen Hintergrund haben. 
-        ShowCoordinates.create(this,currentPosition);
+        MovingObject mv = new MovingObject();
+        mv.init();
+        ShowCoordinates.create(this);
     }        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSlider altitude;

@@ -6,7 +6,7 @@ package simuchute.ch.i10a.chute.ui;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import javax.swing.JFrame;
+import javax.swing.JComponent;
 import simuchute.ch.i10a.chute.logic.Flugzeug;
 import simuchute.ch.i10a.chute.logic.Springer;
 
@@ -14,11 +14,12 @@ import simuchute.ch.i10a.chute.logic.Springer;
  *
  * @author Fish-Guts
  */
-public class MovingObject {
+public class MovingObject extends JComponent {
 
     static double x_pos;
     static double y_pos;
-    int radius = 2;
+    int radius = 5;
+    static double[][] result;
 
     public void paint(Graphics g) {
 
@@ -51,7 +52,10 @@ public class MovingObject {
         Springer springer;
         springer = new Springer();
         double[] startWerte = {0, 1000, 0, 0};
-        double[][] result;
+        double[][] res;
         result = springer.fTable(0, 1, 100, 0, startWerte, 1);
+    }
+    public double[][] getResult() {
+        return result;
     }
 }
