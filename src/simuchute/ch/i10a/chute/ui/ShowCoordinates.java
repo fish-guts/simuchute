@@ -77,7 +77,7 @@ public class ShowCoordinates {
 
         Point point = null;
         ShowCoordinates showCoo;
-        Dimension dim = new Dimension(450, 100);
+        Dimension dim = new Dimension(1600, 968);
         Color color;
 
         public CoordinateExample(ShowCoordinates showCoo) {
