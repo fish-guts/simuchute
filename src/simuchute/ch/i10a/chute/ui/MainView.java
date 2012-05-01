@@ -12,8 +12,7 @@ public class MainView extends JFrame {
      */
     public MainView() {
         initComponents();
-        drawCoordinateSystem();
-    }
+      }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -32,7 +31,7 @@ public class MainView extends JFrame {
         windDirection = new javax.swing.JLabel();
         windDirectionValue = new javax.swing.JSlider();
         windDirectionValueLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        startButton = new javax.swing.JButton();
         plane = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,10 +74,18 @@ public class MainView extends JFrame {
 
         windDirectionValueLabel.setText("°");
 
-        jButton1.setText("Start!");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        startButton.setText("Start!");
+        startButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                startButtonMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                startButtonMouseReleased(evt);
+            }
+        });
+        startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                startButtonActionPerformed(evt);
             }
         });
 
@@ -121,10 +128,10 @@ public class MainView extends JFrame {
                         .addComponent(windDirectionValueLabel)
                         .addGap(15, 15, 15))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(151, 151, 151)
+                .addGap(117, 117, 117)
                 .addComponent(plane)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(startButton)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -151,14 +158,11 @@ public class MainView extends JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(windDirectionValueLabel)
                         .addComponent(windDirectionValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(plane, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(628, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(startButton)
+                    .addComponent(plane, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(667, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -181,9 +185,9 @@ public class MainView extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_startButtonActionPerformed
 
     private void altitudeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_altitudeStateChanged
         Integer spinValue = new Integer(altitude.getValue());
@@ -196,6 +200,14 @@ public class MainView extends JFrame {
         String str = spinValue.toString() + " °";
         windDirectionValueLabel.setText(str);
     }//GEN-LAST:event_windDirectionValueStateChanged
+
+    private void startButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startButtonMouseClicked
+       
+    }//GEN-LAST:event_startButtonMouseClicked
+
+    private void startButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startButtonMouseReleased
+         drawCoordinateSystem();
+    }//GEN-LAST:event_startButtonMouseReleased
 
     /**
      * @param args the command line arguments
@@ -235,10 +247,10 @@ public class MainView extends JFrame {
     private javax.swing.JSlider altitude;
     private javax.swing.JLabel altitudeLabel;
     private javax.swing.JLabel altitudeValue;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JLabel plane;
+    private javax.swing.JLabel plane;
+    private javax.swing.JButton startButton;
     private javax.swing.JLabel velocityLabel;
     private javax.swing.JTextField velocityValue;
     private javax.swing.JLabel velocityValueLabel;

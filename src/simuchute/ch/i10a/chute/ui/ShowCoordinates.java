@@ -12,6 +12,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import javax.swing.event.MouseInputListener;
+import simuchute.ch.i10a.chute.logic.Flugzeug;
 
 public class ShowCoordinates {
 
@@ -35,7 +36,7 @@ public class ShowCoordinates {
     public void update(int x, int y) {
         if (x < 0 || y < 0) {
             point2 = null;
-           // updateLabel();
+            // updateLabel();
             return;
         }
         if (point2 == null) {
@@ -59,9 +60,9 @@ public class ShowCoordinates {
     protected void updateLabel() {
         String msg = "";
         if (point2 != null) {
-        msg += "Momentane Position:  (" + point2.x + ", "
-            + point2.y + "). ";
-      }
+            msg += "Momentane Position:  (" + point2.x + ", "
+                    + point2.y + "). ";
+        }
         currentPosition.setText(msg);
     }
 
@@ -69,6 +70,24 @@ public class ShowCoordinates {
         ShowCoordinates showCoo = new ShowCoordinates();
         showCoo.build(f.getContentPane());
         f.pack();
+        showCoo.calcPlane();
+
+    }
+
+    private void calcPlane() {
+        Flugzeug flugzeug;
+        flugzeug = new Flugzeug();
+        double[] startKO = {0, 0};
+        flugzeug.setKO(startKO);
+        flugzeug.setTime(5);
+        flugzeug.setTStart(0);
+        flugzeug.calcFlugbahn();
+        double[][] flugbahn = flugzeug.getFlugbahn();
+        //Tools.printArray(startKO);
+        //Tools.printArray2D(flugbahn);
+        for(int i = 0;i<flugbahn.length;i++) {
+            
+        }
     }
 
     public static class CoordinateExample extends JComponent implements
@@ -101,6 +120,7 @@ public class ShowCoordinates {
                 g.fillRect(point.x - 4, point.y - 4, 8, 8);
             }
         }
+
         private void drawGrid(Graphics g, int grid) {
             Insets insets = getInsets();
             int X1 = insets.left;
