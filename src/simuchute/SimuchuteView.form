@@ -11,20 +11,23 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanel1" min="-2" pref="445" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                   <Component id="jLayeredPane1" min="-2" pref="717" max="-2" attributes="0"/>
-                  <EmptySpace pref="311" max="32767" attributes="0"/>
+                  <EmptySpace pref="196" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="11" pref="11" max="11" attributes="0"/>
                   <Component id="jLayeredPane1" min="-2" pref="535" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanel1" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -47,26 +50,32 @@
                                   <Component id="flightSpeedLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="windDirectionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace pref="37" max="32767" attributes="0"/>
-                                          <Component id="flightSpeedValue" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="windDirectionValue" min="-2" pref="151" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                      <Component id="flightSpeedValue" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="altitudeValue" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="windDirectionValue" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
+                                          <Component id="altitudeValue" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
                           <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="airSpeedLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                                  <Component id="aurSpeedValue" min="-2" max="-2" attributes="0"/>
+                                  <Component id="airSpeedValue" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="parachuteAreaValue" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="251" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
@@ -75,8 +84,9 @@
                           <Component id="flightSpeedValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="windDirectionValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="airSpeedValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="airSpeedValueLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -85,25 +95,6 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="altitudeLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="flightSpeedLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="windDirectionLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="airSpeedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="aurSpeedValue" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="altitudeValue" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="flightSpeedValue" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="windDirectionValue" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="altitudeValueLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -113,10 +104,43 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="airSpeedValueLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="altitudeLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                      <Component id="flightSpeedLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="windDirectionLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="altitudeValue" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="flightSpeedValue" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="windDirectionValue" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="airSpeedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="airSpeedValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="564" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="parachuteAreaValue" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
+                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="airSpeedValueLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="412" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -205,10 +229,28 @@
                 <Property name="name" type="java.lang.String" value="flightSpeedValue" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="aurSpeedValue">
+            <Component class="javax.swing.JTextField" name="airSpeedValue">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="aurSpeedValue.text"/>
-                <Property name="name" type="java.lang.String" value="aurSpeedValue" noResource="true"/>
+                <Property name="text" type="java.lang.String" resourceKey="airSpeedValue.text"/>
+                <Property name="name" type="java.lang.String" value="airSpeedValue" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="jLabel2.text"/>
+                <Property name="name" type="java.lang.String" value="jLabel2" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="parachuteAreaValue">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="parachuteAreaValue.text"/>
+                <Property name="name" type="java.lang.String" value="parachuteAreaValue" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="airSpeedValueLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="airSpeedValueLabel1.text"/>
+                <Property name="name" type="java.lang.String" value="airSpeedValueLabel1" noResource="true"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -252,7 +294,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
-                  <JLayeredPaneConstraints x="-6" y="0" width="1020" height="460" layer="0" position="-1"/>
+                  <JLayeredPaneConstraints x="-6" y="0" width="1020" height="600" layer="0" position="-1"/>
                 </Constraint>
               </Constraints>
             </Component>

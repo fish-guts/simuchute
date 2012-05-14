@@ -6,7 +6,6 @@ package simuchute;
 
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
-import simuchute.ch.i10a.chute.ui.ShowCoordinates;
 
 /**
  * The main class of the application.

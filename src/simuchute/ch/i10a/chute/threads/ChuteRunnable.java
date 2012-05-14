@@ -4,8 +4,6 @@
  */
 package simuchute.ch.i10a.chute.threads;
 
-import simuchute.ch.i10a.chute.ui.MovingObject;
-
 /**
  *
  * @author Fish-Guts
