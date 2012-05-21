@@ -11,10 +11,31 @@ public class SimulationObject {
     private int planeSpeed;
     private int windDirection;
     private int windSpeed;
-    private int parachuteArea;
+    private double parachuteArea;
+    private int parachuteTimeToOpen;
+    private int springerGewicht;
+    private int runTime;
+    private double luftDichte;
+    private double springerGeschwindigkeit;
+    private double springerFlaeche;
 
+    public double getSpringerFlaeche(){
+        return springerFlaeche;
+    }
 
+    public double getLuftDichte(){
+        return luftDichte;
+    }
 
+    public double getSpringerGeschwindigkeit(){
+        return springerGeschwindigkeit;
+    }
+    public int getRunTime(){
+        return runTime;
+    }
+    public int getSpringerGewicht(){
+        return springerGewicht;
+    }
     public int getAltitude() {
         return altitude;
     }
@@ -27,8 +48,11 @@ public class SimulationObject {
     public int getWindSpeed() {
         return windSpeed;
     }
-    public int getParachuteArea() {
+    public double getParachuteArea() {
         return parachuteArea;
+    }
+    public int getParachuteTimeToOpen(){
+        return parachuteTimeToOpen;
     }
     /**
      * Setter Methode um die Flughöhe festzulegen
@@ -36,6 +60,25 @@ public class SimulationObject {
      */
     public void setAltitude(int alt) {
         altitude = alt;
+    }
+
+    public void getSpringerFlaeche(double springerFlaeche){
+        this.springerFlaeche = springerFlaeche;
+    }
+    public void getSpringerGeschwindigkeit(double springerGeschwindigkeit){
+        this.springerGeschwindigkeit = springerGeschwindigkeit;
+    }
+    public void setLuftDichte(double luftDichte){
+        this.luftDichte = luftDichte;
+    }
+    public void setRunTime(int runTime){
+        this.runTime = runTime;
+    }
+    public void setSpringerGewicht(int gewicht){
+        springerGewicht = gewicht;
+    }
+    public void setParachuteTimeToOpen(int time){
+        parachuteTimeToOpen = time;
     }
     /**
      * Setter Methode um die Fluggeschwindigkeit festzulegen
@@ -62,7 +105,7 @@ public class SimulationObject {
      * Setter Methode um die Fläche des Fallchirms festzulegen
      * @param area: Fläche in m²
      */
-    public void setParachuteArea(int area) {
+    public void setParachuteArea(double area) {
         parachuteArea = area;
     }
 
