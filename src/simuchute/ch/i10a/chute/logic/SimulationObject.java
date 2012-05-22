@@ -18,6 +18,32 @@ public class SimulationObject {
     private double luftDichte;
     private double springerGeschwindigkeit;
     private double springerFlaeche;
+    private double tOeffnen;
+    private double tOffen;
+    private double tEnde;
+    private double tAnfang;
+    private double schrittweiteH;
+    
+
+    public double getSchrittweiteH(){
+        return schrittweiteH;
+    }
+
+    public double getTEnde(){
+        return tEnde;
+    }
+
+    public double getTAnfang(){
+        return tAnfang;
+    }
+
+    public double getTOffen(){
+        return tOffen;
+    }
+
+    public double getTOeffnen(){
+        return tOeffnen;
+    }
 
     public double getSpringerFlaeche(){
         return springerFlaeche;
@@ -62,10 +88,28 @@ public class SimulationObject {
         altitude = alt;
     }
 
-    public void getSpringerFlaeche(double springerFlaeche){
+    public void setSchrittweite(double schrittweite){
+        this.schrittweiteH = schrittweite;
+    }
+
+    public void setTAnfang(double tAnfang){
+        this.tAnfang = tAnfang;
+    }
+
+    public void setTEnde(double tEnde){
+        this.tEnde = tEnde;
+    }
+    public void setTOffen(double tOffen){
+        this.tOffen = tOffen;
+    }
+
+    public void setTOeffnen(double tOeffnen){
+        this.tOeffnen = tOeffnen;
+    }
+    public void setSpringerFlaeche(double springerFlaeche){
         this.springerFlaeche = springerFlaeche;
     }
-    public void getSpringerGeschwindigkeit(double springerGeschwindigkeit){
+    public void setSpringerGeschwindigkeit(double springerGeschwindigkeit){
         this.springerGeschwindigkeit = springerGeschwindigkeit;
     }
     public void setLuftDichte(double luftDichte){

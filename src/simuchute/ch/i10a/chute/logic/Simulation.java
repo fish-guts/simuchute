@@ -30,10 +30,7 @@ public class Simulation {
         simulationobject.setSpringerGewicht(70);
         simulationobject.setParachuteTimeToOpen(2);
         simulationobject.setLuftDichte(1.2);
-
-        Widerstand widerstand = new Widerstand(simulationobject.getRunTime(), simulationobject.getSpringerGeschwindigkeit()
-                , simulationobject.getLuftDichte(), simulationobject.getParachuteArea(), simulationobject.getSpringerFlaeche);
-        
+        simulationobject.setTOeffnen(10);
 
 
     }

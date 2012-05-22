@@ -18,20 +18,35 @@ public class Springer extends linalg4_4  {
 
 	private double r;
 	private Widerstand widerstand;
+        private SimulationObject simulationObject;
+        private double schrittweite;
+       
 	
-	public Springer(){
+	public Springer(SimulationObject simulationObject){
 		
 		init();
+                this.simulationObject = simulationObject;
+                this.schrittweite = simulationObject.getSchrittweiteH();
+
+
 		
 	}
 	
     public void init(){
 
-        r=0;
-        widerstand = new Widerstand();
-        widerstand.startWiderstand(0.01);
-        widerstand.Settoeffnen(10);
-        widerstand.Settoffen(15);
+            r=0;
+            widerstand = new Widerstand(simulationObject);
+           
+
+    }
+
+    public SimulationObject CalcSpringer(){
+
+         double[] startWerte = {0,1000,0,0};
+         double[][] result;
+	 result = fTable(0, 1, 100, 0, startWerte, schrittweite);
+
+        return null;
     }
     
     public double[] w (double t, double[] z)
@@ -48,7 +63,7 @@ public class Springer extends linalg4_4  {
         /** Systemgr�ssen **/   
         double g = 10;        // Gravitations Beschleunigung
         
-        r=widerstand.calcWiderstand(t);
+        widerstand.calcWiderstand();
 	
         /** Einflussgr�ssen **/
         /** Funktion wind **/   

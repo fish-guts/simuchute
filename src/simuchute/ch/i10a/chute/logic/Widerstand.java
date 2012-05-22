@@ -17,15 +17,7 @@ public class Widerstand {
 
 	public Widerstand(SimulationObject simulationObject){
 
-
 		init();
-
-                if(simulationObject.getRunTime() < simulationObject.getTOeffnen()){
-                    calcWiderstand();
-                }
-                if(runTime > toeffnen && runTime < toffen){
-                    calcDynWiderstand();
-                }
 
 	}
 	
@@ -34,18 +26,25 @@ public class Widerstand {
 	}
 
         public double calcWiderstand(){
+
+                 if(simulationObject.getRunTime() < simulationObject.getTOeffnen()){
+                    return widerstandResult = cw * 0.5 * geschwindigkeit *
+                    geschwindigkeit * luftDichte * springerFlaeche;
+                }
+                if(simulationObject.getRunTime() > simulationObject.getTOeffnen() 
+                         && simulationObject.getRunTime() < simulationObject.getTOffen()){
+                    int n = (int) (Math.round( (Math.abs (simulationObject.getTEnde()-simulationObject.getTAnfang()) / simulationObject.getSchrittweiteH())));
+                    calcDynWiderstand();
+                }
              
-            return widerstandResult = cw * 0.5 * geschwindigkeit * geschwindigkeit * luftDichte * springerFlaeche;
+            
 
         }
-	public double calcDynWiderstand(){
+	public double calcDiffFlaeche(){
 
                 double differenzFlaeche = simulationObject.getParachuteArea() - simulationObject.getSpringerFlaeche();
 
-            
-                
-		
-		return widerstandResult;
+		return differenzFlaeche;
 	}
     
     public void Settoffen(double toffen){

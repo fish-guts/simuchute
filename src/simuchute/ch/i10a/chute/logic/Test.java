@@ -22,9 +22,7 @@ public class Test {
 		
 		Springer springer;
 		springer = new Springer();
-		double[] startWerte = {0,1000,0,0};
-		double[][] result;
-		result = springer.fTable(0, 1, 100, 0, startWerte, 1);
+		
 		
 		Tools.printArray2D(result);
 		
