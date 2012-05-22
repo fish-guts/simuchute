@@ -14,7 +14,7 @@ public class SimulationObject {
     private double parachuteArea;
     private int parachuteTimeToOpen;
     private int springerGewicht;
-    private int runTime;
+    private double runTime;
     private double luftDichte;
     private double springerGeschwindigkeit;
     private double springerFlaeche;
@@ -23,7 +23,11 @@ public class SimulationObject {
     private double tEnde;
     private double tAnfang;
     private double schrittweiteH;
-    
+    private double[][] result;
+
+    public double[][] getResult(){
+        return result;
+    }
 
     public double getSchrittweiteH(){
         return schrittweiteH;
@@ -56,7 +60,7 @@ public class SimulationObject {
     public double getSpringerGeschwindigkeit(){
         return springerGeschwindigkeit;
     }
-    public int getRunTime(){
+    public double getRunTime(){
         return runTime;
     }
     public int getSpringerGewicht(){
@@ -92,6 +96,10 @@ public class SimulationObject {
         this.schrittweiteH = schrittweite;
     }
 
+    public void setResult(double[][] result){
+        this.result = result;
+    }
+
     public void setTAnfang(double tAnfang){
         this.tAnfang = tAnfang;
     }
@@ -115,7 +123,7 @@ public class SimulationObject {
     public void setLuftDichte(double luftDichte){
         this.luftDichte = luftDichte;
     }
-    public void setRunTime(int runTime){
+    public void setRunTime(double runTime){
         this.runTime = runTime;
     }
     public void setSpringerGewicht(int gewicht){

@@ -7,17 +7,20 @@ public class Widerstand {
 	double t;
 	double widerstand;
         double runTime;
-        double luftDichte;
         double springerFlaeche;
         double fallSchirmFlaeche;
         double geschwindigkeit;
         double widerstandResult;
-        double cw =1;
+        double cw=1;
 	SimulationObject simulationObject;
+        int widerstandSchrittweite;
+        int widerstandSchrittweiteCounter;
 
 	public Widerstand(SimulationObject simulationObject){
 
 		init();
+                this.simulationObject = simulationObject;
+                this.springerFlaeche = simulationObject.getSpringerFlaeche();
 
 	}
 	
@@ -26,19 +29,66 @@ public class Widerstand {
 	}
 
         public double calcWiderstand(){
+                 System.out.println(" Runtime " + simulationObject.getRunTime() +
+                         "  TOeffnen " + simulationObject.getTOeffnen());
 
+                 System.out.println(" Geschwindigkeit " + simulationObject.getSpringerGeschwindigkeit());
+                 System.out.println(" springerFlaeche " + springerFlaeche);
+                 System.out.println(" Luftdichte "+ simulationObject.getLuftDichte());
+                 System.out.println(" cw: " + cw);
                  if(simulationObject.getRunTime() < simulationObject.getTOeffnen()){
-                    return widerstandResult = cw * 0.5 * geschwindigkeit *
-                    geschwindigkeit * luftDichte * springerFlaeche;
-                }
-                if(simulationObject.getRunTime() > simulationObject.getTOeffnen() 
-                         && simulationObject.getRunTime() < simulationObject.getTOffen()){
-                    int n = (int) (Math.round( (Math.abs (simulationObject.getTEnde()-simulationObject.getTAnfang()) / simulationObject.getSchrittweiteH())));
-                    calcDynWiderstand();
-                }
-             
-            
 
+                    System.out.println(" Runtime < Toeffnen ");
+                    widerstandResult = cw * 0.5 * geschwindigkeit *
+                    geschwindigkeit * simulationObject.getLuftDichte() * springerFlaeche;
+
+                    System.out.println("Widerstand Runtime < TOeffnen: " + widerstandResult);
+                    
+                    return widerstandResult;
+
+                }
+
+                if(simulationObject.getRunTime() >= simulationObject.getTOeffnen()){
+
+
+                        if(simulationObject.getTOffen() < simulationObject.getRunTime()){
+
+                            System.out.println(" Runtime ist grösser als Toeffnen ");
+                             springerFlaeche = springerFlaeche + calcFlaechenSchritt();
+
+                            return widerstandResult = cw * 0.5 * geschwindigkeit *
+                            geschwindigkeit * simulationObject.getLuftDichte() * springerFlaeche;
+
+                         }
+                        else{
+                            System.out.println("Runtime ist grösser als toffen");
+                            return widerstandResult = cw * 0.5 * geschwindigkeit *
+                            geschwindigkeit * simulationObject.getLuftDichte() * springerFlaeche;
+
+                        }
+            }
+          System.out.print("Fehler bei Widerstand");
+          System.out.println(" Widerstand " + widerstandResult);
+          return 0;
+
+             
+        }
+
+        public int setWiderstandSchrittweiteCounter(){
+            return widerstandSchrittweiteCounter;
+        }
+        public void getWiderstandSchrittweiteCounter(int WiderstandSchrittweiteCounter){
+            this.widerstandSchrittweiteCounter = WiderstandSchrittweiteCounter;
+        }
+
+        public double calcFlaechenSchritt(){
+            return calcDiffFlaeche()/setWiderstandSchrittweite();
+        }
+        public int setWiderstandSchrittweite(){
+
+                int n = (int) (Math.round( (Math.abs (simulationObject.getTEnde()-simulationObject.getTAnfang()) / simulationObject.getSchrittweiteH())));
+                int widerstandSchrittweite = (int)calcDiffFlaeche();
+                return widerstandSchrittweite;
         }
 	public double calcDiffFlaeche(){
 
