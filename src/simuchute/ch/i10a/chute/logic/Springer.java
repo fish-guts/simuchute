@@ -35,7 +35,7 @@ public class Springer extends linalg4_4  {
 	
     public void init(){
 
-            r=0;
+            
             widerstand = new Widerstand(simulationObject);
            
 
@@ -65,9 +65,11 @@ public class Springer extends linalg4_4  {
         /** Systemgr�ssen **/   
         double g = 10;        // Gravitations Beschleunigung
         simulationObject.setRunTime(t);
+        System.out.println(z[3]);
         simulationObject.setSpringerGeschwindigkeit(z[3]);
         //widerstand.calcWiderstand();
-        System.out.println("Widerstand berechnet " + widerstand.calcWiderstand());
+        //r = widerstand.calcWiderstand();
+        //System.out.println(widerstand.calcWiderstand());
         System.out.println("");
 	r = 0.001;
         /** Einflussgr�ssen **/

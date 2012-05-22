@@ -11,7 +11,7 @@ public class Widerstand {
         double fallSchirmFlaeche;
         double geschwindigkeit;
         double widerstandResult;
-        double cw=1;
+        double cw=0.0001;
 	SimulationObject simulationObject;
         int widerstandSchrittweite;
         int widerstandSchrittweiteCounter;
@@ -21,6 +21,7 @@ public class Widerstand {
 		init();
                 this.simulationObject = simulationObject;
                 this.springerFlaeche = simulationObject.getSpringerFlaeche();
+                
 
 	}
 	
@@ -39,8 +40,8 @@ public class Widerstand {
                  if(simulationObject.getRunTime() < simulationObject.getTOeffnen()){
 
                     System.out.println(" Runtime < Toeffnen ");
-                    widerstandResult = cw * 0.5 * geschwindigkeit *
-                    geschwindigkeit * simulationObject.getLuftDichte() * springerFlaeche;
+                    widerstandResult = cw * 0.5 * simulationObject.getSpringerGeschwindigkeit() *
+                    simulationObject.getSpringerGeschwindigkeit() * simulationObject.getLuftDichte() * springerFlaeche;
 
                     System.out.println("Widerstand Runtime < TOeffnen: " + widerstandResult);
                     
@@ -56,12 +57,15 @@ public class Widerstand {
                             System.out.println(" Runtime ist grösser als Toeffnen ");
                              springerFlaeche = springerFlaeche + calcFlaechenSchritt();
 
-                            return widerstandResult = cw * 0.5 * geschwindigkeit *
-                            geschwindigkeit * simulationObject.getLuftDichte() * springerFlaeche;
+                            System.out.println("Widerstand Runtime > TOeffnen: " + widerstandResult);
+                            return widerstandResult = cw * 0.5 * simulationObject.getSpringerGeschwindigkeit() *
+                            simulationObject.getSpringerGeschwindigkeit() * simulationObject.getLuftDichte() * springerFlaeche;
 
                          }
                         else{
                             System.out.println("Runtime ist grösser als toffen");
+
+                            System.out.println("Widerstand Runtime > TOffnen: " + widerstandResult);
                             return widerstandResult = cw * 0.5 * geschwindigkeit *
                             geschwindigkeit * simulationObject.getLuftDichte() * springerFlaeche;
 

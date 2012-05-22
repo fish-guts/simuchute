@@ -7,22 +7,22 @@ package simuchute.ch.i10a.chute.logic;
 public class SimulationObject {
 
     /* klassenvariablen */
-    private int altitude;
-    private int planeSpeed;
-    private int windDirection;
-    private int windSpeed;
-    private double parachuteArea;
-    private int parachuteTimeToOpen;
-    private int springerGewicht;
-    private double runTime;
-    private double luftDichte;
-    private double springerGeschwindigkeit;
-    private double springerFlaeche;
-    private double tOeffnen;
+    private int altitude; // Regler, Meter
+    private int planeSpeed; // m/s
+    private int windDirection; // nicht in GUI
+    private int windSpeed; // m/s
+    private double parachuteArea; // m^2
+    private int parachuteTimeToOpen; // s
+    private int springerGewicht; // kg
+    private double runTime; //
+    private double luftDichte; // kg/m^3
+    private double springerGeschwindigkeit; //
+    private double springerFlaeche; //
+    private double tOeffnen; //
     private double tOffen;
     private double tEnde;
     private double tAnfang;
-    private double schrittweiteH;
+    private double schrittweiteH; //
     private double[][] result;
 
     public double[][] getResult(){
