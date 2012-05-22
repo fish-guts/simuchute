@@ -2,14 +2,15 @@ package simuchute.ch.i10a.chute.logic;
 
 public class Flugzeug {
 	
-	private double geschwindigkeit;
+	
 	private double[] KO;
-	private double tstart;
-	private double t;
 	private double xKO;
 	private double yKO;
 	private double[][] flugbahn;
-	
+	private double tEnde;
+        private double counter;
+
+
 	public Flugzeug(){
 		
 		init();
@@ -17,9 +18,7 @@ public class Flugzeug {
 	}
 	
 	public void init(){
-		geschwindigkeit = 40;
-		tstart = 0;
-		t = 0;
+           
 	}
 	
 	public void setKO(double[] ko){
@@ -39,33 +38,21 @@ public class Flugzeug {
 	}
 
 	
-	public void setTime(double t){
-		
-		this.t = t;
-	}
-	
-	public void setTStart(double tStart){
-		tstart = tStart;
-		
-	}
-	
-	public void calcFlugbahn(){
-		
-		double counter = tstart;
-		double yKO = 0;
-		flugbahn = new double[(int) t][2];
-		while(counter < t){
-			xKO = geschwindigkeit*counter;
+	public SimulationObject calcFlugbahn(SimulationObject simulationObject){
+
+                
+		counter = simulationObject.getTAnfang();
+                tEnde = simulationObject.getTEnde();
+		flugbahn = new double[(int) tEnde][2];
+		while(counter < tEnde){
+			xKO = simulationObject.getPlaneSpeed()*counter;
 			flugbahn[(int) counter][0] = xKO;
 			flugbahn[(int) counter][1] = yKO;
 			counter++;
 			
 		}
-		
+                simulationObject.setFlugbahn(flugbahn);
+		return simulationObject;
 	}
-	
-	public double[][] getFlugbahn(){
-            return flugbahn;
-	}
-	
+
 }

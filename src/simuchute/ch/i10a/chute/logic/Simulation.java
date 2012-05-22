@@ -19,11 +19,11 @@ public class Simulation {
     }
     public Simulation(){
 
-        System.out.print("TEST");
+        
         SimulationObject simulationobject = new SimulationObject();
         simulationobject.setAltitude(10000);
         simulationobject.setParachuteArea(10);
-        simulationobject.setPlaneSpeed(50);
+        simulationobject.setPlaneSpeed(30);
         simulationobject.setWindSpeed(50);
         simulationobject.setSpringerGewicht(70);
         simulationobject.setSpringerFlaeche(1);
@@ -33,15 +33,16 @@ public class Simulation {
         simulationobject.setLuftDichte(1.2);
         simulationobject.setSchrittweite(1);
         simulationobject.setTAnfang(0);
-        simulationobject.setTEnde(30);
+        simulationobject.setTEnde(50);
 
-        Springer springer = new Springer(simulationobject);
-        springer.CalcSpringer();
+        // Flugzeug wird erstellt und Flugbahn berechnet. 
+        Flugzeug flugzeug = new Flugzeug();
+        simulationobject = flugzeug.calcFlugbahn(simulationobject);
 
-        Tools.printArray2D(simulationobject.getResult());
-
-
-
+        // Test Print, FlugzeugDaten?
+        Tools.printArray2D(simulationobject.getFlugbahn());
+        
+       
 
     }
 

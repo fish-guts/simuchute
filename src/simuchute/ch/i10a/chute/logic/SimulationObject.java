@@ -24,6 +24,11 @@ public class SimulationObject {
     private double tAnfang;
     private double schrittweiteH; //
     private double[][] result;
+    private double[][] flugbahn;
+
+    public double[][] getFlugbahn(){
+        return flugbahn;
+    }
 
     public double[][] getResult(){
         return result;
@@ -104,6 +109,9 @@ public class SimulationObject {
         this.tAnfang = tAnfang;
     }
 
+    public void setFlugbahn(double[][] flugbahn){
+        this.flugbahn = flugbahn;
+    }
     public void setTEnde(double tEnde){
         this.tEnde = tEnde;
     }
