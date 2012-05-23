@@ -7,10 +7,10 @@ package simuchute.ch.i10a.chute.logic;
 public class SimulationObject {
 
     /* klassenvariablen */
-    private int altitude; // Regler, Meter
-    private int planeSpeed; // m/s
-    private int windDirection; // nicht in GUI
-    private int windSpeed; // m/s
+    private double altitude; // Regler, Meter
+    private double planeSpeed; // m/s
+    private double windDirection; // nicht in GUI
+    private double windSpeed; // m/s
     private double parachuteArea; // m^2
     private int parachuteTimeToOpen; // s
     private int springerGewicht; // kg
@@ -71,16 +71,16 @@ public class SimulationObject {
     public int getSpringerGewicht(){
         return springerGewicht;
     }
-    public int getAltitude() {
+    public double getAltitude() {
         return altitude;
     }
-    public int getPlaneSpeed() {
+    public double getPlaneSpeed() {
         return planeSpeed;
     }
-    public int getWindDirection() {
+    public double getWindDirection() {
         return windDirection;
     }
-    public int getWindSpeed() {
+    public double getWindSpeed() {
         return windSpeed;
     }
     public double getParachuteArea() {
@@ -93,7 +93,7 @@ public class SimulationObject {
      * Setter Methode um die Flughöhe festzulegen
      * @param alt: Flughöhe in Metern. 
      */
-    public void setAltitude(int alt) {
+    public void setAltitude(double alt) {
         altitude = alt;
     }
 
@@ -144,21 +144,15 @@ public class SimulationObject {
      * Setter Methode um die Fluggeschwindigkeit festzulegen
      * @param speed: Geschwindigkeit in m/s
      */
-    public void setPlaneSpeed(int speed) {
+    public void setPlaneSpeed(double speed) {
         planeSpeed = speed;
     }
-    /**
-     * Setter Mthode um die Windirchtung festzulegen.
-     * @param dir: Windirchtung in Grad (0/360° = Vertikal nach oben)
-     */
-    public void setWindDirection(int dir) {
-        windDirection = dir;
-    }
+
     /**
      * Setter Methode um die Windgeschwindigkeit festzulegen
      * @param speed: Geschwindigkeit in m/s
      */
-    public void setWindSpeed(int speed) {
+    public void setWindSpeed(double speed) {
         windSpeed = speed;
     }
      /**
