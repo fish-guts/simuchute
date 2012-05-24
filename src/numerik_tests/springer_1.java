@@ -57,8 +57,10 @@ double m = 20;
         res[1] =  z[3];
 
         res[2] =      - r * (u[0]*uBetrag);
-        res[3] =  - g - r * (u[1]*uBetrag);
-
+        //res[2] =      - (r * (u[0]*uBetrag))/m;
+        //res[3] =  - m*g - (r * (u[1]*uBetrag))/m*g;
+        //res[3] = -g * (1-(r*(u[0]*uBetrag))/(m*g));
+        res[3] =  - g - (r * (u[1]*uBetrag))/m;
         return res;
     }
 
@@ -66,9 +68,7 @@ double m = 20;
     {
         double[]res = new double[4];
 
-        res[0] =  20;
-        res[1] =  5;
-         res[0] =  -10;
+        res[0] =  10;
         res[1] =  0;
 
 
@@ -108,6 +108,18 @@ double m = 20;
 
         for (i=1;  i<=n; i++)
         {
+
+
+             if(t > 10 && t < 20){
+
+                r = r + 0.0005;
+                System.out.println("Widerstand: " + r + " Zeit " + t);
+            }
+
+            else{
+
+                System.out.println("Widerstand: " + r + " Zeit " + t);
+            }
             ka = w(t,y);
             //ya = y + h/2*ka;
             ya = addVector(y, multScalarVector(h/2, ka));
@@ -185,7 +197,8 @@ double m = 20;
         for (i=1; i<=n-1; i++)
         {
 
-          y[i] = RK4 (t[i], t[i-1], y[i-1], h);
+         y[i] = RK4 (t[i], t[i-1], y[i-1], h);
+
 
         }
 

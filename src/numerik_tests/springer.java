@@ -18,9 +18,11 @@ public class springer extends linalg4_4
 /* Funktionen zur Definition  von Differentialgleichungen y'=w(t,y)    */
 /*            f�r Funktion y=f(t)                                      */
 /***********************************************************************/
-double r = 0.002;
-double g = 10;
-double m = 20;
+double r;
+double g = 9.81;
+double m = 80;
+double flaeche = 0.5;
+double cw = 0.5;
 
 
 /**     Beispiel 1: Differentialgleichung 1. Ordnung   */
@@ -28,7 +30,6 @@ double m = 20;
     public double w (double t, double z)
     {
 
-        
         return g * (1-(r*z*z)/(m*g));
     }
 
@@ -61,17 +62,22 @@ double m = 20;
 
         for (i=1;  i<=n; i++)
         {
-            if(t >= 10 && t <= 20){
+            if(t >= 20 && t <= 22){
 
-                r = r + 0.0005;
-                System.out.print("Widerstand: " + r + " ");
-            }
-            
-            else{
+                cw = cw + 0.1;
+                r = cw * 0.5 * 1.2 * flaeche;
+                flaeche = flaeche + 1;
 
-                System.out.print("Widerstand: " + r + " ");
+                System.out.print("Widerstand: " + r + "Fläche: " + flaeche + " " + " CW: " + cw + " ");
+                //r = r + 0.0005;
+              // System.out.print("Widerstand: " + r + " ");
+
             }
-            
+             else{
+                 r = cw * 0.5 * 1.2 * flaeche;
+                 System.out.print("Widerstand: " + r + "Fläche: " + flaeche + " " + " CW: " + cw + " ");
+             }
+
             ka = w(t,y);
             ya = y + h/2*ka;
 
@@ -92,9 +98,9 @@ double m = 20;
             k = (1.0/6)*((ka + 2*kb + 2*kc + kd));
 
             y = y + k*h;
-
-            t = t + h;
             System.out.println("Geschwindigkeit: " + y + "  Zeit: " + t);
+            t = t + h;
+
 
         //  System.out.println (i+" t="+t+" ka="+ka[0]+" kb="+kb[0]+" k=" +k[0]);
 
