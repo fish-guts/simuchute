@@ -4,22 +4,31 @@
  */
 
 package numerik_tests;
+import simuchute.ch.i10a.chute.logic.*;
 import simuchute.ch.i10a.chute.tools.Tools;
+
 /**
  *
  * @author Yzerman
  */
 public class Test {
+SimulationObject simulationObject;
+
 
          public static void main(String[] args) {
+             Test test = new Test();
 
-            //swp2012_ode1 eulerklasse = new swp2012_ode1();
+            
+           }
+
+         public Test(){
+             //swp2012_ode1 eulerklasse = new swp2012_ode1();
             //Euler(double tEnde, double tAnfang, double yAnfang, double h)
             //System.out.println(eulerklasse.Euler(1000, 0, 0, 1));
 //            System.out.println(" " + eulerklasse.RK4(6, 0, 0.5, 2));
 
-             springer eulerklasse = new springer();
-             System.out.println(" " + eulerklasse.RK4(1000, 0, 0, 0.1));
+            // springer eulerklasse = new springer(); zeigen
+            // System.out.println(" " + eulerklasse.RK4(1000, 0, 0, 0.1)); zeigen
              springer_1 springer = new springer_1();
 
             //double t0, double t1, double tn, double tAnfang, double[] yAnfang, double h
@@ -31,13 +40,11 @@ public class Test {
         // t1: zweiter Zeitpunkt der Tabelle tTable
         // tn: letzter Zeitpunkt der Tabelle tTable
              double[] yAnfang = {100, 1000, 5,-5};
-            Tools.printArray2D(springer.fTable(0, 1, 1000, 0, yAnfang, 1));
-            double[][] result = springer.fTable(0, 1, 1000, 0, yAnfang, 1);
+            //Tools.printArray2D(springer.fTable(0, 1, 1000, 0, yAnfang, 1));
+            double[][] result = springer.fTable(0, 0.01, 1000, 0, yAnfang, 0.01);
             double KoNull =0;
             int n = result.length;
 
-            int aBereich = 90;
-            int bBereich = 110;
             for(int i = 0; i< n;i++){
 
                 if(result[i][1] <= 0){
@@ -53,7 +60,7 @@ public class Test {
 
                 yAnfang[0] = yAnfang[0] -(KoNull-110);
                 System.out.println(yAnfang[0]);
-                result = springer.fTable(0, 1, 1000, 0, yAnfang, 1);
+                result = springer.fTable(0, 0.01, 1000, 0, yAnfang, 0.01);
 
                  for(int i = 0; i< n;i++){
 
@@ -68,10 +75,51 @@ public class Test {
                 }
              }
 
+            SimulationObject simulationObject = new SimulationObject();
 
 
+            n=result.length;
 
 
+            int o = 0;
+            for(int i =0; i<n;i++){
+
+
+                if(result[i][1]<=0){
+
+
+                }
+                else{
+                    o++;
+                }
+            }
+            double[][] resultnew = new double[o][4];
+            for(int i =0; i<n;i++){
+
+
+                if(result[i][1]<=0){
+                    o++;
+
+                }
+                else{
+
+                resultnew[i][0] = result[i][0];
+                resultnew[i][1] = result[i][1];
+                resultnew[i][2] = result[i][2];
+                resultnew[i][3] = result[i][3];
+
+                }
+            }
+
+            System.out.println(" NEUES ARRAYY                      NEU ARRAY");
+            Tools.printArray2D(resultnew);
+
+            simulationObject.setFlugbahn(resultnew);
+             
+         }
+         public SimulationObject getSimulationObject(){
+             return simulationObject;
+         }
 
 
             //double[][] result = springer.fTable(0, 1, 1000, 0, yAnfang, 1);
@@ -126,7 +174,7 @@ public class Test {
 //                        return;
 //
 //                    }
-                }
+                
 
             }
 

@@ -145,6 +145,10 @@ double m = 20;
             y = addVector(y, multScalarVector(h, k));
             t = t + h;
 
+            if(y[1] <= 0){
+                return y;
+            }
+
         //  System.out.println (i+" t="+t+" ka="+ka[0]+" kb="+kb[0]+" k=" +k[0]);
 
         }
