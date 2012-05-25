@@ -19,8 +19,10 @@ import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import simuchute.ch.i10a.chute.logic.Flugzeug;
 import simuchute.ch.i10a.chute.logic.SimulationObject;
+import simuchute.ch.i10a.chute.tools.Helper;
 
 
 /**
@@ -32,6 +34,13 @@ public class SimuchuteView extends FrameView {
         super(app);
 
         initComponents();
+            jumper.setVisible(false);
+            plane.setVisible(false);
+            currentPositionLabel.setVisible(false);
+            currentPositionLabelX.setVisible(false);
+            currentPositionLabelY.setVisible(false);
+            currentPositionValueY.setVisible(false);
+            currentPositionValueX.setVisible(false);
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
@@ -470,23 +479,41 @@ public class SimuchuteView extends FrameView {
             super(app);
             backupApp = app;
             this.view = view;
-            jumper.setVisible(false);
-            plane.setVisible(false);
-            currentPositionLabel.setVisible(false);
-            currentPositionLabelX.setVisible(false);
-            currentPositionLabelY.setVisible(false);
-            currentPositionValueY.setVisible(false);
-            currentPositionValueX.setVisible(false);
         }
 
         @Override
         protected Object doInBackground() {
+
+            // validierungen, damit nur korrekte werte übergeben werten
+            if(!Helper.isDouble(view.flightSpeedValue.getText()))  {
+                JOptionPane.showMessageDialog(null,"Der Wert im Feld Fluggeschwindigkeit muss eine Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
+            if(!Helper.isDouble(view.airSpeedValue.getText()))  {
+                JOptionPane.showMessageDialog(null,"Der Wert im Feld Windgeschwindkigkeit muss eine Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
+            if(!Helper.isDouble(view.airDensityValue.getText()))  {
+                JOptionPane.showMessageDialog(null,"Der Wert im Feld Luftdichte muss eine Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
+           if(!Helper.isInteger(view.jumperWeightValue.getText()))  {
+                JOptionPane.showMessageDialog(null,"Der Wert im Feld Gewicht Springer muss eine ganze Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
+
+            if(!Helper.isDouble(view.parachuteAreaValue.getText()))  {
+                JOptionPane.showMessageDialog(null,"Der Wert im Feld Fallschirmfläche muss eine Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
+
             SimulationObject sim = new SimulationObject();
             sim.setAltitude(view.altitudeValue.getValue());
             sim.setParachuteArea(new Double(view.parachuteAreaValue.getText()));
             sim.setPlaneSpeed(new Double(view.flightSpeedValue.getText()));
             sim.setWindSpeed(new Double(view.airSpeedValue.getText()));
             sim.setLuftDichte(new Double(view.airDensityValue.getText()));
+            sim.setSpringerGewicht(new Integer(view.jumperWeightValue.getText()));
             Flugzeug flugzeug = new Flugzeug();
             double[] startKO = {0, 0};
             //flugzeug.setKO(startKO);
