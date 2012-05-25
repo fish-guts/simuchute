@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.params=t\ z
+comment0.target=double[]\ w(double,\ double[])
+comment0.text=Anfangswerte\ f\u00FCr\ Testlauf\:\ \ zAnfang\={10,\ 0,\ 5,\ 12}\ \n
+comment1.params=t\ z
+comment1.target=double[]\ wind(double,\ double[])
+comment2.params=tEnde\ tAnfang\ yAnfang\ h
+comment2.target=double[]\ Euler(double,\ double,\ double[],\ double)
+comment2.text=Integration\ mit\ der\ Methode\ nach\ Euler\ \ \ \ \ \ \n
+comment3.params=tEnde\ tAnfang\ yAnfang\ h
+comment3.target=double[]\ RK2(double,\ double,\ double[],\ double)
+comment3.text=Integration\ mit\ der\ Methode\ nach\ Heun\ (Runge\ Kutta\ 2.Ordnung)\ \ \ \ \ \ \n
+comment4.params=tEnde\ tAnfang\ yAnfang\ h
+comment4.target=double[]\ RK4(double,\ double,\ double[],\ double)
+comment4.text=Integration\ mit\ der\ Methode\ Runge\ Kutta\ 4.Ordnung)\ \ \ \ \ \ \n
+comment5.params=t0\ t1\ tn
+comment5.target=double[]\ tTable(double,\ double,\ double)
+comment5.text=erstellen\ einer\ gleichabst\u00E4ndigen\ Tabelle\ t[]\ \=\ {t0,\ t1,\ ...\ tn}\ \n
+comment6.params=t\ tAnfang\ yAnfang\ h
+comment6.target=double[][]\ yTable(double[],\ double,\ double[],\ double)
+comment6.text=erstellen\ einer\ Wertetabelle\ \ y\=f(t)\ f\u00FCr\ die\nL\u00F6sung\ des\ Anfangswertproblems\ dy/dt\=w(t,y),\ f(tAnfang)\=yAnfang\ \ \ \n
+comment7.params=t0\ t1\ tn\ tAnfang\ yAnfang\ h
+comment7.target=double[][]\ fTable(double,\ double,\ double,\ double,\ double[],\ double)
+comment7.text=erstellen\ einer\ Wertetabelle\ t\ -->\ y\=f(t)\ \nmit\ einer\ gleichabst\u00E4ndigen\ Tabelle\ t[]\ \=\ {t0,\ t1,\ ...\ tn}\ \nf\u00FCr\ die\ L\u00F6sung\ des\ Anfangswertproblems\ dy/dt\=w(t,y),\ f(tAnfang)\=yAnfang\ \ \ \n
+numComments=8

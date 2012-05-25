@@ -105,30 +105,35 @@ public class SimuchuteView extends FrameView {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        coordinateLayer = new javax.swing.JLabel();
+        jumper = new javax.swing.JLabel();
+        plane = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         altitudeLabel = new javax.swing.JLabel();
         flightSpeedLabel = new javax.swing.JLabel();
-        airSpeedLabel = new javax.swing.JLabel();
         airSpeedValueLabel = new javax.swing.JLabel();
+        jumperWeightValueLabel1 = new javax.swing.JLabel();
         flightSpeedValueLabel = new javax.swing.JLabel();
         altitudeValueLabel = new javax.swing.JLabel();
         altitudeValue = new javax.swing.JSlider();
         flightSpeedValue = new javax.swing.JTextField();
-        airSpeedValue = new javax.swing.JTextField();
         parachuteAreaLabel = new javax.swing.JLabel();
+        airSpeedValue = new javax.swing.JTextField();
         parachuteAreaValue = new javax.swing.JTextField();
-        airSpeedValueLabel1 = new javax.swing.JLabel();
         jumpgerWeightLabel = new javax.swing.JLabel();
+        airSpeedValueLabel1 = new javax.swing.JLabel();
         jumperWeightValue = new javax.swing.JTextField();
-        jumperWeightValueLabel = new javax.swing.JLabel();
         airDensityLabel = new javax.swing.JLabel();
+        jumperWeightValueLabel = new javax.swing.JLabel();
         airDensityValue = new javax.swing.JTextField();
-        jumperWeightValueLabel1 = new javax.swing.JLabel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        plane = new javax.swing.JLabel();
-        jumper = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        windSpeedLabel = new javax.swing.JLabel();
+        currentPositionLabel = new javax.swing.JLabel();
+        currentPositionLabelX = new javax.swing.JLabel();
+        currentPositionLabelY = new javax.swing.JLabel();
+        currentPositionValueX = new javax.swing.JTextField();
+        currentPositionValueY = new javax.swing.JTextField();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -142,11 +147,31 @@ public class SimuchuteView extends FrameView {
 
         mainPanel.setName("mainPanel"); // NOI18N
 
+        jLayeredPane1.setName("jLayeredPane1"); // NOI18N
+
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(simuchute.SimuchuteApp.class).getContext().getResourceMap(SimuchuteView.class);
+        coordinateLayer.setIcon(resourceMap.getIcon("coordinateLayer.icon")); // NOI18N
+        coordinateLayer.setText(resourceMap.getString("coordinateLayer.text")); // NOI18N
+        coordinateLayer.setName("coordinateLayer"); // NOI18N
+        coordinateLayer.setBounds(-10, -40, 1010, 720);
+        jLayeredPane1.add(coordinateLayer, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jumper.setIcon(resourceMap.getIcon("jumper.icon")); // NOI18N
+        jumper.setText(resourceMap.getString("jumper.text")); // NOI18N
+        jumper.setName("jumper"); // NOI18N
+        jumper.setBounds(350, 10, 38, 38);
+        jLayeredPane1.add(jumper, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        plane.setIcon(resourceMap.getIcon("plane.icon")); // NOI18N
+        plane.setText(resourceMap.getString("plane.text")); // NOI18N
+        plane.setName("plane"); // NOI18N
+        plane.setBounds(10, 0, 20, 30);
+        jLayeredPane1.add(plane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         jPanel1.setName("jPanel1"); // NOI18N
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(simuchute.SimuchuteApp.class).getContext().getActionMap(SimuchuteView.class, this);
         jButton1.setAction(actionMap.get("startSimulation")); // NOI18N
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(simuchute.SimuchuteApp.class).getContext().getResourceMap(SimuchuteView.class);
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N
 
@@ -156,11 +181,11 @@ public class SimuchuteView extends FrameView {
         flightSpeedLabel.setText(resourceMap.getString("flightSpeedLabel.text")); // NOI18N
         flightSpeedLabel.setName("flightSpeedLabel"); // NOI18N
 
-        airSpeedLabel.setText(resourceMap.getString("airSpeedLabel.text")); // NOI18N
-        airSpeedLabel.setName("airSpeedLabel"); // NOI18N
-
         airSpeedValueLabel.setText(resourceMap.getString("airSpeedValueLabel.text")); // NOI18N
         airSpeedValueLabel.setName("airSpeedValueLabel"); // NOI18N
+
+        jumperWeightValueLabel1.setText(resourceMap.getString("jumperWeightValueLabel1.text")); // NOI18N
+        jumperWeightValueLabel1.setName("jumperWeightValueLabel1"); // NOI18N
 
         flightSpeedValueLabel.setText(resourceMap.getString("flightSpeedValueLabel.text")); // NOI18N
         flightSpeedValueLabel.setName("flightSpeedValueLabel"); // NOI18N
@@ -180,35 +205,54 @@ public class SimuchuteView extends FrameView {
         flightSpeedValue.setText(resourceMap.getString("flightSpeedValue.text")); // NOI18N
         flightSpeedValue.setName("flightSpeedValue"); // NOI18N
 
-        airSpeedValue.setText(resourceMap.getString("airSpeedValue.text")); // NOI18N
-        airSpeedValue.setName("airSpeedValue"); // NOI18N
-
         parachuteAreaLabel.setText(resourceMap.getString("parachuteAreaLabel.text")); // NOI18N
         parachuteAreaLabel.setName("parachuteAreaLabel"); // NOI18N
+
+        airSpeedValue.setText(resourceMap.getString("airSpeedValue.text")); // NOI18N
+        airSpeedValue.setName("airSpeedValue"); // NOI18N
 
         parachuteAreaValue.setText(resourceMap.getString("parachuteAreaValue.text")); // NOI18N
         parachuteAreaValue.setName("parachuteAreaValue"); // NOI18N
 
-        airSpeedValueLabel1.setText(resourceMap.getString("airSpeedValueLabel1.text")); // NOI18N
-        airSpeedValueLabel1.setName("airSpeedValueLabel1"); // NOI18N
-
         jumpgerWeightLabel.setText(resourceMap.getString("jumpgerWeightLabel.text")); // NOI18N
         jumpgerWeightLabel.setName("jumpgerWeightLabel"); // NOI18N
+
+        airSpeedValueLabel1.setText(resourceMap.getString("airSpeedValueLabel1.text")); // NOI18N
+        airSpeedValueLabel1.setName("airSpeedValueLabel1"); // NOI18N
 
         jumperWeightValue.setText(resourceMap.getString("jumperWeightValue.text")); // NOI18N
         jumperWeightValue.setName("jumperWeightValue"); // NOI18N
 
-        jumperWeightValueLabel.setText(resourceMap.getString("jumperWeightValueLabel.text")); // NOI18N
-        jumperWeightValueLabel.setName("jumperWeightValueLabel"); // NOI18N
-
         airDensityLabel.setText(resourceMap.getString("airDensityLabel.text")); // NOI18N
         airDensityLabel.setName("airDensityLabel"); // NOI18N
+
+        jumperWeightValueLabel.setText(resourceMap.getString("jumperWeightValueLabel.text")); // NOI18N
+        jumperWeightValueLabel.setName("jumperWeightValueLabel"); // NOI18N
 
         airDensityValue.setText(resourceMap.getString("airDensityValue.text")); // NOI18N
         airDensityValue.setName("airDensityValue"); // NOI18N
 
-        jumperWeightValueLabel1.setText(resourceMap.getString("jumperWeightValueLabel1.text")); // NOI18N
-        jumperWeightValueLabel1.setName("jumperWeightValueLabel1"); // NOI18N
+        windSpeedLabel.setText(resourceMap.getString("windSpeedLabel.text")); // NOI18N
+        windSpeedLabel.setName("windSpeedLabel"); // NOI18N
+
+        currentPositionLabel.setText(resourceMap.getString("currentPositionLabel.text")); // NOI18N
+        currentPositionLabel.setName("currentPositionLabel"); // NOI18N
+
+        currentPositionLabelX.setText(resourceMap.getString("currentPositionLabelX.text")); // NOI18N
+        currentPositionLabelX.setName("currentPositionLabelX"); // NOI18N
+
+        currentPositionLabelY.setText(resourceMap.getString("currentPositionLabelY.text")); // NOI18N
+        currentPositionLabelY.setName("currentPositionLabelY"); // NOI18N
+
+        currentPositionValueX.setFont(resourceMap.getFont("currentPositionValueX.font")); // NOI18N
+        currentPositionValueX.setForeground(resourceMap.getColor("currentPositionValueX.foreground")); // NOI18N
+        currentPositionValueX.setText(resourceMap.getString("currentPositionValueX.text")); // NOI18N
+        currentPositionValueX.setName("currentPositionValueX"); // NOI18N
+
+        currentPositionValueY.setFont(resourceMap.getFont("currentPositionValueY.font")); // NOI18N
+        currentPositionValueY.setForeground(resourceMap.getColor("currentPositionValueY.foreground")); // NOI18N
+        currentPositionValueY.setText(resourceMap.getString("currentPositionValueY.text")); // NOI18N
+        currentPositionValueY.setName("currentPositionValueY"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -219,39 +263,46 @@ public class SimuchuteView extends FrameView {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(altitudeLabel)
-                            .addComponent(flightSpeedLabel))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(flightSpeedValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(altitudeValue, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(airSpeedLabel)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(altitudeLabel)
+                                    .addComponent(flightSpeedLabel))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(currentPositionLabelX, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(currentPositionLabelY, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(45, 45, 45)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(airSpeedValue, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(flightSpeedValue, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(parachuteAreaValue)
+                                                .addComponent(jumperWeightValue)
+                                                .addComponent(airDensityValue, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(currentPositionValueX, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(currentPositionValueY, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(16, 16, 16)
+                                        .addComponent(altitudeValue, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(airDensityLabel)
                             .addComponent(parachuteAreaLabel)
-                            .addComponent(jumpgerWeightLabel))
-                        .addGap(48, 48, 48)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(airSpeedValue)
-                            .addComponent(parachuteAreaValue)
-                            .addComponent(jumperWeightValue)
-                            .addComponent(airDensityValue, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)))
-                    .addComponent(airDensityLabel))
-                .addGap(138, 138, 138)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(airSpeedValueLabel)
-                    .addComponent(airSpeedValueLabel1)
-                    .addComponent(altitudeValueLabel)
-                    .addComponent(flightSpeedValueLabel)
-                    .addComponent(jumperWeightValueLabel)
-                    .addComponent(jumperWeightValueLabel1))
-                .addContainerGap(18, Short.MAX_VALUE))
+                            .addComponent(jumpgerWeightLabel)
+                            .addComponent(windSpeedLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(airSpeedValueLabel)
+                            .addComponent(airSpeedValueLabel1)
+                            .addComponent(altitudeValueLabel)
+                            .addComponent(flightSpeedValueLabel)
+                            .addComponent(jumperWeightValueLabel)
+                            .addComponent(jumperWeightValueLabel1))
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(currentPositionLabel)
+                        .addContainerGap(350, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,12 +325,12 @@ public class SimuchuteView extends FrameView {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(airSpeedLabel)
+                            .addComponent(windSpeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(airSpeedValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(9, 9, 9)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(parachuteAreaValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(parachuteAreaLabel))
+                            .addComponent(parachuteAreaLabel)
+                            .addComponent(parachuteAreaValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jumpgerWeightLabel)
@@ -287,10 +338,8 @@ public class SimuchuteView extends FrameView {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(airDensityLabel)
-                            .addComponent(airDensityValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jumperWeightValueLabel1))
-                        .addGap(164, 164, 164)
-                        .addComponent(jButton1))
+                            .addComponent(jumperWeightValueLabel1)
+                            .addComponent(airDensityValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(airSpeedValueLabel)
@@ -298,28 +347,23 @@ public class SimuchuteView extends FrameView {
                         .addComponent(airSpeedValueLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jumperWeightValueLabel)))
-                .addContainerGap(394, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(currentPositionLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(currentPositionLabelX, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(currentPositionLabelY, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(currentPositionValueY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(currentPositionValueX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(341, Short.MAX_VALUE))
         );
-
-        jLayeredPane1.setName("jLayeredPane1"); // NOI18N
-
-        plane.setIcon(resourceMap.getIcon("plane.icon")); // NOI18N
-        plane.setText(resourceMap.getString("plane.text")); // NOI18N
-        plane.setName("plane"); // NOI18N
-        plane.setBounds(40, 10, 20, 30);
-        jLayeredPane1.add(plane, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jumper.setIcon(resourceMap.getIcon("jumper.icon")); // NOI18N
-        jumper.setText(resourceMap.getString("jumper.text")); // NOI18N
-        jumper.setName("jumper"); // NOI18N
-        jumper.setBounds(360, 0, 38, 38);
-        jLayeredPane1.add(jumper, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jLabel1.setIcon(resourceMap.getIcon("jLabel1.icon")); // NOI18N
-        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
-        jLabel1.setBounds(-116, 0, 1130, 600);
-        jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -328,14 +372,14 @@ public class SimuchuteView extends FrameView {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1009, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -377,11 +421,11 @@ public class SimuchuteView extends FrameView {
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 1482, Short.MAX_VALUE)
+            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 1553, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1312, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1383, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -427,6 +471,12 @@ public class SimuchuteView extends FrameView {
             backupApp = app;
             this.view = view;
             jumper.setVisible(false);
+            plane.setVisible(false);
+            currentPositionLabel.setVisible(false);
+            currentPositionLabelX.setVisible(false);
+            currentPositionLabelY.setVisible(false);
+            currentPositionValueY.setVisible(false);
+            currentPositionValueX.setVisible(false);
         }
 
         @Override
@@ -471,18 +521,22 @@ public class SimuchuteView extends FrameView {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel airDensityLabel;
     public javax.swing.JTextField airDensityValue;
-    public javax.swing.JLabel airSpeedLabel;
     public javax.swing.JTextField airSpeedValue;
     public javax.swing.JLabel airSpeedValueLabel;
     public javax.swing.JLabel airSpeedValueLabel1;
     public javax.swing.JLabel altitudeLabel;
     public javax.swing.JSlider altitudeValue;
     public javax.swing.JLabel altitudeValueLabel;
+    public javax.swing.JLabel coordinateLayer;
+    public javax.swing.JLabel currentPositionLabel;
+    public javax.swing.JLabel currentPositionLabelX;
+    public javax.swing.JLabel currentPositionLabelY;
+    public javax.swing.JTextField currentPositionValueX;
+    public javax.swing.JTextField currentPositionValueY;
     public javax.swing.JLabel flightSpeedLabel;
     public javax.swing.JTextField flightSpeedValue;
     public javax.swing.JLabel flightSpeedValueLabel;
     public javax.swing.JButton jButton1;
-    public javax.swing.JLabel jLabel1;
     public javax.swing.JLayeredPane jLayeredPane1;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JLabel jumper;
@@ -499,6 +553,7 @@ public class SimuchuteView extends FrameView {
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     public javax.swing.JPanel statusPanel;
+    public javax.swing.JLabel windSpeedLabel;
     // End of variables declaration//GEN-END:variables
     private final Timer messageTimer;
     private final Timer busyIconTimer;
