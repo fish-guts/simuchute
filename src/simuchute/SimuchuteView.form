@@ -115,6 +115,7 @@
                                                                           <Component id="jumperAreaValue" alignment="0" pref="82" max="32767" attributes="1"/>
                                                                           <Component id="airDensityValue" alignment="0" pref="82" max="32767" attributes="1"/>
                                                                           <Component id="timeToOpenValue" alignment="0" min="-2" pref="90" max="-2" attributes="1"/>
+                                                                          <Component id="timeWhenToOpenValue" alignment="0" min="-2" pref="90" max="-2" attributes="1"/>
                                                                       </Group>
                                                                       <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
                                                                   </Group>
@@ -190,6 +191,12 @@
                               <EmptySpace min="-2" pref="364" max="-2" attributes="0"/>
                           </Group>
                           <Component id="timeToOpenLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="timeWhenToOpenLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="245" max="32767" attributes="0"/>
+                              <Component id="timeWhenToOpenValueLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="419" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -260,7 +267,13 @@
                           <Component id="timeToOpenValue" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="timeToOpenValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="timeWhenToOpenLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="timeWhenToOpenValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="timeWhenToOpenValue" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="startButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="calcLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -491,6 +504,24 @@
               <Properties>
                 <Property name="text" type="java.lang.String" resourceKey="timeToOpenValueLabel.text"/>
                 <Property name="name" type="java.lang.String" value="timeToOpenValueLabel" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="timeWhenToOpenLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="timeWhenToOpenLabel.text"/>
+                <Property name="name" type="java.lang.String" value="timeWhenToOpenLabel" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="timeWhenToOpenValue">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="timeWhenToOpenValue.text"/>
+                <Property name="name" type="java.lang.String" value="timeWhenToOpenValue" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="timeWhenToOpenValueLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="timeWhenToOpenValueLabel.text"/>
+                <Property name="name" type="java.lang.String" value="timeWhenToOpenValueLabel" noResource="true"/>
               </Properties>
             </Component>
           </SubComponents>

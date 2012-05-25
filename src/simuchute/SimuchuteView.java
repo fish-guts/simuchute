@@ -150,6 +150,9 @@ public class SimuchuteView extends FrameView {
         timeToOpenLabel = new javax.swing.JLabel();
         timeToOpenValue = new javax.swing.JTextField();
         timeToOpenValueLabel = new javax.swing.JLabel();
+        timeWhenToOpenLabel = new javax.swing.JLabel();
+        timeWhenToOpenValue = new javax.swing.JTextField();
+        timeWhenToOpenValueLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -169,7 +172,7 @@ public class SimuchuteView extends FrameView {
         jumper.setIcon(resourceMap.getIcon("jumper.icon")); // NOI18N
         jumper.setText(resourceMap.getString("jumper.text")); // NOI18N
         jumper.setName("jumper"); // NOI18N
-        jumper.setBounds(350, 10, 38, 38);
+        jumper.setBounds(350, 10, -1, -1);
         jLayeredPane1.add(jumper, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         plane.setIcon(resourceMap.getIcon("plane.icon")); // NOI18N
@@ -293,6 +296,15 @@ public class SimuchuteView extends FrameView {
         timeToOpenValueLabel.setText(resourceMap.getString("timeToOpenValueLabel.text")); // NOI18N
         timeToOpenValueLabel.setName("timeToOpenValueLabel"); // NOI18N
 
+        timeWhenToOpenLabel.setText(resourceMap.getString("timeWhenToOpenLabel.text")); // NOI18N
+        timeWhenToOpenLabel.setName("timeWhenToOpenLabel"); // NOI18N
+
+        timeWhenToOpenValue.setText(resourceMap.getString("timeWhenToOpenValue.text")); // NOI18N
+        timeWhenToOpenValue.setName("timeWhenToOpenValue"); // NOI18N
+
+        timeWhenToOpenValueLabel.setText(resourceMap.getString("timeWhenToOpenValueLabel.text")); // NOI18N
+        timeWhenToOpenValueLabel.setName("timeWhenToOpenValueLabel"); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -324,7 +336,8 @@ public class SimuchuteView extends FrameView {
                                                                     .addComponent(jumperWeightValue)
                                                                     .addComponent(jumperAreaValue, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
                                                                     .addComponent(airDensityValue, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                                                                    .addComponent(timeToOpenValue, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                    .addComponent(timeToOpenValue, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(timeWhenToOpenValue, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                 .addGap(113, 113, 113))
                                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                                 .addGap(16, 16, 16)
@@ -373,7 +386,12 @@ public class SimuchuteView extends FrameView {
                                         .addGap(22, 22, 22)))
                                 .addGap(119, 119, 119)))
                         .addGap(364, 364, 364))
-                    .addComponent(timeToOpenLabel)))
+                    .addComponent(timeToOpenLabel)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(timeWhenToOpenLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
+                        .addComponent(timeWhenToOpenValueLabel)
+                        .addGap(419, 419, 419))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,7 +445,12 @@ public class SimuchuteView extends FrameView {
                     .addComponent(timeToOpenLabel)
                     .addComponent(timeToOpenValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(timeToOpenValueLabel))
-                .addGap(111, 111, 111)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(timeWhenToOpenLabel)
+                    .addComponent(timeWhenToOpenValueLabel)
+                    .addComponent(timeWhenToOpenValue, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(73, 73, 73)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(startButton)
                     .addComponent(calcLabel))
@@ -595,6 +618,10 @@ public class SimuchuteView extends FrameView {
                 JOptionPane.showMessageDialog(null, "Der Wert im Feld Fallschirmöffnungszeit muss eine Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
+           if (!Helper.isInteger(view.timeWhenToOpenValue.getText())) {
+                JOptionPane.showMessageDialog(null, "Der Wert im Feld Zeitpunkt Öffnung muss eine Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
              // Hier legen wir ein Objekt an, um die GUI Werte zu kapseln
             SimulationObject sim = new SimulationObject();
             sim.setAltitude(view.altitudeValue.getValue());
@@ -606,6 +633,7 @@ public class SimuchuteView extends FrameView {
             sim.setParachuteTimeToOpen(new Integer(view.timeToOpenValue.getText()));
             sim.setSpringerFlaeche(new Double(view.jumperAreaValue.getText()));
             sim.setLuftDichte(new Double(view.airDensityValue.getText()));
+            sim.setTOeffnen(new Double(view.timeWhenToOpenValue.getText()));
 
             Flugzeug flugzeug = new Flugzeug();
             double[] startKO = {0, 0};
@@ -794,6 +822,9 @@ public class SimuchuteView extends FrameView {
     public javax.swing.JLabel timeToOpenLabel;
     public javax.swing.JTextField timeToOpenValue;
     public javax.swing.JLabel timeToOpenValueLabel;
+    public javax.swing.JLabel timeWhenToOpenLabel;
+    public javax.swing.JTextField timeWhenToOpenValue;
+    public javax.swing.JLabel timeWhenToOpenValueLabel;
     public javax.swing.JLabel windSpeedLabel;
     // End of variables declaration//GEN-END:variables
     private final Timer messageTimer;
