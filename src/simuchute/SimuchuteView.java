@@ -623,20 +623,20 @@ public class SimuchuteView extends FrameView {
             Point resetCoords = jumper.getLocation();
             double resetX = resetCoords.getX();
             double resetY = resetCoords.getY();
-            currentPositionValueY.setText(new Double(resetX).toString());
-            currentPositionValueX.setText(new Double(resetY).toString());
-            for (int i = 0; i < resultnew.length; i++) {
+            for (int i = resultnew.length-1; i >= 0; i--) {
                 try {
-                    Thread.sleep(32);
+                    Thread.sleep(10);
                 } catch (InterruptedException ie) {
                     return null;
                 }
                 plane.setVisible(true);
-                plane.setLocation(i / 5, 10);
                 jumper.setVisible(true);
-                jumper.setLocation((int) (resetY + resultnew[i][0]), (int) (resetX + resultnew[i][1]));
-                currentPositionValueX.setText(new Double(resultnew[i][0]).toString());
-                currentPositionValueY.setText(new Double(resultnew[i][1]).toString());
+                plane.setLocation(i, 20);
+                Point newLocation = new Point();
+                newLocation.setLocation(resetX + resultnew[i][0],resetY + resultnew[i][1]);
+                jumper.setLocation(newLocation.getLocation());
+                currentPositionValueX.setText(new Double(newLocation.getX()).toString());
+                currentPositionValueY.setText(new Double(newLocation.getY()).toString());
                 //            currentPositionValueX.setText(new Double(resetX).toString());
             //currentPositionValueY.setText(new Double(resetY).toString());
             }
