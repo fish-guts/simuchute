@@ -3,6 +3,7 @@ package simuchute;
 /*
  * SimuchuteView.java
  */
+import java.awt.Point;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -36,8 +37,8 @@ public class SimuchuteView extends FrameView {
         currentPositionLabel.setVisible(false);
         currentPositionLabelX.setVisible(false);
         currentPositionLabelY.setVisible(false);
-        currentPositionValueY.setVisible(false);
         currentPositionValueX.setVisible(false);
+        currentPositionValueY.setVisible(false);
         calcLabel.setVisible(false);
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
@@ -113,9 +114,9 @@ public class SimuchuteView extends FrameView {
 
         mainPanel = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        coordinateLayer = new javax.swing.JLabel();
         jumper = new javax.swing.JLabel();
         plane = new javax.swing.JLabel();
+        coordinateLayer = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         startButton = new javax.swing.JButton();
         altitudeLabel = new javax.swing.JLabel();
@@ -139,8 +140,8 @@ public class SimuchuteView extends FrameView {
         currentPositionLabel = new javax.swing.JLabel();
         currentPositionLabelX = new javax.swing.JLabel();
         currentPositionLabelY = new javax.swing.JLabel();
-        currentPositionValueX = new javax.swing.JTextField();
         currentPositionValueY = new javax.swing.JTextField();
+        currentPositionValueX = new javax.swing.JTextField();
         calcLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
@@ -158,12 +159,6 @@ public class SimuchuteView extends FrameView {
         jLayeredPane1.setName("jLayeredPane1"); // NOI18N
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(simuchute.SimuchuteApp.class).getContext().getResourceMap(SimuchuteView.class);
-        coordinateLayer.setIcon(resourceMap.getIcon("coordinateLayer.icon")); // NOI18N
-        coordinateLayer.setText(resourceMap.getString("coordinateLayer.text")); // NOI18N
-        coordinateLayer.setName("coordinateLayer"); // NOI18N
-        coordinateLayer.setBounds(-10, -40, 1010, 720);
-        jLayeredPane1.add(coordinateLayer, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         jumper.setIcon(resourceMap.getIcon("jumper.icon")); // NOI18N
         jumper.setText(resourceMap.getString("jumper.text")); // NOI18N
         jumper.setName("jumper"); // NOI18N
@@ -175,6 +170,12 @@ public class SimuchuteView extends FrameView {
         plane.setName("plane"); // NOI18N
         plane.setBounds(10, 0, 20, 30);
         jLayeredPane1.add(plane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        coordinateLayer.setIcon(resourceMap.getIcon("coordinateLayer.icon")); // NOI18N
+        coordinateLayer.setText(resourceMap.getString("coordinateLayer.text")); // NOI18N
+        coordinateLayer.setName("coordinateLayer"); // NOI18N
+        coordinateLayer.setBounds(-10, -40, 1010, 720);
+        jLayeredPane1.add(coordinateLayer, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jPanel1.setName("jPanel1"); // NOI18N
 
@@ -252,15 +253,15 @@ public class SimuchuteView extends FrameView {
         currentPositionLabelY.setText(resourceMap.getString("currentPositionLabelY.text")); // NOI18N
         currentPositionLabelY.setName("currentPositionLabelY"); // NOI18N
 
-        currentPositionValueX.setFont(resourceMap.getFont("currentPositionValueX.font")); // NOI18N
-        currentPositionValueX.setForeground(resourceMap.getColor("currentPositionValueX.foreground")); // NOI18N
-        currentPositionValueX.setText(resourceMap.getString("currentPositionValueX.text")); // NOI18N
-        currentPositionValueX.setName("currentPositionValueX"); // NOI18N
-
         currentPositionValueY.setFont(resourceMap.getFont("currentPositionValueY.font")); // NOI18N
         currentPositionValueY.setForeground(resourceMap.getColor("currentPositionValueY.foreground")); // NOI18N
         currentPositionValueY.setText(resourceMap.getString("currentPositionValueY.text")); // NOI18N
         currentPositionValueY.setName("currentPositionValueY"); // NOI18N
+
+        currentPositionValueX.setFont(resourceMap.getFont("currentPositionValueX.font")); // NOI18N
+        currentPositionValueX.setForeground(resourceMap.getColor("currentPositionValueX.foreground")); // NOI18N
+        currentPositionValueX.setText(resourceMap.getString("currentPositionValueX.text")); // NOI18N
+        currentPositionValueX.setName("currentPositionValueX"); // NOI18N
 
         calcLabel.setFont(resourceMap.getFont("calcLabel.font")); // NOI18N
         calcLabel.setForeground(resourceMap.getColor("calcLabel.foreground")); // NOI18N
@@ -299,8 +300,8 @@ public class SimuchuteView extends FrameView {
                                                         .addComponent(parachuteAreaValue)
                                                         .addComponent(jumperWeightValue)
                                                         .addComponent(airDensityValue, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                                                        .addComponent(currentPositionValueX, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(currentPositionValueY, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addComponent(currentPositionValueY, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(currentPositionValueX, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
                                         .addGap(18, 18, 18)
                                         .addComponent(calcLabel)
@@ -379,9 +380,9 @@ public class SimuchuteView extends FrameView {
                         .addComponent(currentPositionLabelY, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(54, 54, 54)
-                        .addComponent(currentPositionValueY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(currentPositionValueX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15)
-                        .addComponent(currentPositionValueX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(currentPositionValueY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(341, Short.MAX_VALUE))
         );
 
@@ -617,19 +618,27 @@ public class SimuchuteView extends FrameView {
             currentPositionLabel.setVisible(true);
             currentPositionLabelX.setVisible(true);
             currentPositionLabelY.setVisible(true);
-            currentPositionValueY.setVisible(true);
             currentPositionValueX.setVisible(true);
+            currentPositionValueY.setVisible(true);
+            Point resetCoords = jumper.getLocation();
+            double resetX = resetCoords.getX();
+            double resetY = resetCoords.getY();
+            currentPositionValueY.setText(new Double(resetX).toString());
+            currentPositionValueX.setText(new Double(resetY).toString());
             for (int i = 0; i < resultnew.length; i++) {
                 try {
                     Thread.sleep(32);
                 } catch (InterruptedException ie) {
                     return null;
                 }
+                plane.setVisible(true);
                 plane.setLocation(i / 5, 10);
                 jumper.setVisible(true);
-                jumper.setLocation((int) resultnew[i][1] * 10, (int) resultnew[i][0]);
-                currentPositionValueX.setText(new Double(resultnew[i][1]).toString());
-                currentPositionValueY.setText(new Double(resultnew[i][0]).toString());
+                jumper.setLocation((int) (resetY + resultnew[i][0]), (int) (resetX + resultnew[i][1]));
+                currentPositionValueX.setText(new Double(resultnew[i][0]).toString());
+                currentPositionValueY.setText(new Double(resultnew[i][1]).toString());
+                //            currentPositionValueX.setText(new Double(resetX).toString());
+            //currentPositionValueY.setText(new Double(resetY).toString());
             }
             view.startButton.setEnabled(true);
             return null;
@@ -637,8 +646,6 @@ public class SimuchuteView extends FrameView {
 
         @Override
         protected void succeeded(Object result) {
-            // Runs on the EDT.  Update the GUI based on
-            // the result computed by doInBackground().
         }
     }
 

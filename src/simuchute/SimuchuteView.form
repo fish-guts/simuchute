@@ -40,18 +40,6 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="coordinateLayer">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" resourceKey="coordinateLayer.icon"/>
-                <Property name="text" type="java.lang.String" resourceKey="coordinateLayer.text"/>
-                <Property name="name" type="java.lang.String" value="coordinateLayer" noResource="true"/>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
-                  <JLayeredPaneConstraints x="-10" y="-40" width="1010" height="720" layer="0" position="-1"/>
-                </Constraint>
-              </Constraints>
-            </Component>
             <Component class="javax.swing.JLabel" name="jumper">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="jumper.icon"/>
@@ -73,6 +61,18 @@
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
                   <JLayeredPaneConstraints x="10" y="0" width="20" height="30" layer="0" position="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="coordinateLayer">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="coordinateLayer.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="coordinateLayer.text"/>
+                <Property name="name" type="java.lang.String" value="coordinateLayer" noResource="true"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
+                  <JLayeredPaneConstraints x="-10" y="-40" width="1010" height="720" layer="0" position="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -117,9 +117,9 @@
                                                               <Component id="parachuteAreaValue" alignment="1" max="32767" attributes="1"/>
                                                               <Component id="jumperWeightValue" alignment="1" max="32767" attributes="1"/>
                                                               <Component id="airDensityValue" alignment="0" pref="82" max="32767" attributes="1"/>
-                                                              <Component id="currentPositionValueX" alignment="1" min="-2" pref="79" max="-2" attributes="1"/>
+                                                              <Component id="currentPositionValueY" alignment="1" min="-2" pref="79" max="-2" attributes="1"/>
                                                           </Group>
-                                                          <Component id="currentPositionValueY" min="-2" pref="79" max="-2" attributes="1"/>
+                                                          <Component id="currentPositionValueX" min="-2" pref="79" max="-2" attributes="1"/>
                                                       </Group>
                                                   </Group>
                                                   <Component id="startButton" pref="112" max="32767" attributes="1"/>
@@ -224,9 +224,9 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                              <Component id="currentPositionValueY" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                               <Component id="currentPositionValueX" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="currentPositionValueY" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="341" max="32767" attributes="0"/>
@@ -374,20 +374,20 @@
                 <Property name="name" type="java.lang.String" value="currentPositionLabelY" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="currentPositionValueX">
-              <Properties>
-                <Property name="font" type="java.awt.Font" resourceKey="currentPositionValueX.font"/>
-                <Property name="foreground" type="java.awt.Color" resourceKey="currentPositionValueX.foreground"/>
-                <Property name="text" type="java.lang.String" resourceKey="currentPositionValueX.text"/>
-                <Property name="name" type="java.lang.String" value="currentPositionValueX" noResource="true"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JTextField" name="currentPositionValueY">
               <Properties>
                 <Property name="font" type="java.awt.Font" resourceKey="currentPositionValueY.font"/>
                 <Property name="foreground" type="java.awt.Color" resourceKey="currentPositionValueY.foreground"/>
                 <Property name="text" type="java.lang.String" resourceKey="currentPositionValueY.text"/>
                 <Property name="name" type="java.lang.String" value="currentPositionValueY" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="currentPositionValueX">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="currentPositionValueX.font"/>
+                <Property name="foreground" type="java.awt.Color" resourceKey="currentPositionValueX.foreground"/>
+                <Property name="text" type="java.lang.String" resourceKey="currentPositionValueX.text"/>
+                <Property name="name" type="java.lang.String" value="currentPositionValueX" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="calcLabel">
