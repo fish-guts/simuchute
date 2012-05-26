@@ -233,7 +233,32 @@ private SimulationObject simulationObject;
 
         for (i=1;  i<=n; i++)
         {
+ if(t >= 20 && t <= 22){
 
+                cw = cw + 0.2;
+                r = cw * 0.5 * 1.2 * flaeche;
+                flaeche = flaeche + 0.5;
+
+                System.out.print("Widerstand: " + r + "Fläche: " + flaeche + " " + " CW: " + cw + " ");
+                //r = r + 0.0005;
+              // System.out.print("Widerstand: " + r + " ");
+
+            }
+             else{
+                 r = cw * 0.5 * 1.2 * flaeche;
+                 System.out.print("Widerstand: " + r + "Fläche: " + flaeche + " " + " CW: " + cw + " ");
+             }
+             if(t > 10 && t < 20){
+
+                r = r + 0.05;
+                System.out.println("Widerstand: " + r + " Zeit " + t);
+            }
+
+            else{
+
+                System.out.println("Widerstand: " + r + " Zeit " + t);
+            }
+ 
             ka = w(t,y);
             //ya = y + h/2*ka;
             ya = addVector(y, multScalarVector(h/2, ka));
