@@ -27,8 +27,8 @@ SimulationObject simulationObject;
             //System.out.println(eulerklasse.Euler(1000, 0, 0, 1));
 //            System.out.println(" " + eulerklasse.RK4(6, 0, 0.5, 2));
 
-            // springer eulerklasse = new springer(); zeigen
-            // System.out.println(" " + eulerklasse.RK4(1000, 0, 0, 0.1)); zeigen
+            //springer eulerklasse = new springer();
+            //System.out.println(" " + eulerklasse.RK4(1000, 0, 0, 0.1));
              springer_1 springer = new springer_1();
 
             //double t0, double t1, double tn, double tAnfang, double[] yAnfang, double h
@@ -41,7 +41,7 @@ SimulationObject simulationObject;
         // tn: letzter Zeitpunkt der Tabelle tTable
              double[] yAnfang = {100, 1000, 5,-5};
             //Tools.printArray2D(springer.fTable(0, 1, 1000, 0, yAnfang, 1));
-            double[][] result = springer.fTable(0, 0.01, 1000, 0, yAnfang, 0.01);
+            double[][] result = springer.fTable(0, 0.1, 1000, 0, yAnfang, 0.1);
             double KoNull =0;
             int n = result.length;
 
@@ -57,10 +57,10 @@ SimulationObject simulationObject;
             }
 
             if(KoNull != 110){
-
+                springer_1 springer2 = new springer_1();
                 yAnfang[0] = yAnfang[0] -(KoNull-110);
                 System.out.println(yAnfang[0]);
-                result = springer.fTable(0, 0.01, 1000, 0, yAnfang, 0.01);
+                result = springer2.fTable(0, 0.1, 1000, 0, yAnfang, 0.1);
 
                  for(int i = 0; i< n;i++){
 
