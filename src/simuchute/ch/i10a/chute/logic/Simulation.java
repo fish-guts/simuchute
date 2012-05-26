@@ -31,16 +31,19 @@ public class Simulation {
         simulationobject.setLuftDichte(1.2);
         simulationobject.setTOeffnen(10);
         simulationobject.setLuftDichte(1.2);
-        simulationobject.setSchrittweite(1);
+        simulationobject.setSchrittweite(0.1);
         simulationobject.setTAnfang(0);
         simulationobject.setTEnde(50);
 
         // Flugzeug wird erstellt und Flugbahn berechnet. 
-        Flugzeug flugzeug = new Flugzeug();
-        simulationobject = flugzeug.calcFlugbahn(simulationobject);
+        //Flugzeug flugzeug = new Flugzeug();
+        //simulationobject = flugzeug.calcFlugbahn(simulationobject);
+        Springer springer = new Springer(simulationobject);
+        springer.calcSpringer();
+        simulationobject = springer.getFlugbahnSpringer();
 
         // Test Print, FlugzeugDaten?
-        Tools.printArray2D(simulationobject.getFlugbahn());
+        //Tools.printArray2D(simulationobject.getFlugbahn());
         
        
 
