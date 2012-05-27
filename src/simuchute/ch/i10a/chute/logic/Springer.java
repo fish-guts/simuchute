@@ -15,25 +15,41 @@ public class Springer extends linalg4_4
 
 {
 double r;
-double g = 9.81; // Erdgravitation
-double cw = 0.5; // Gemessener Wert
-double springerFlaeche = 0.5;
+double g;
+double cw;
+double springerFlaeche;
 double m;
 double A;
 double flaeche;
+double differenzFlaeche;
+double anzahlSchritteBeimOeffnen;
+double flaecheAddierenBeimOeffnen;
+int counter;
+
 private SimulationObject simulationObject;
 
     public Springer(SimulationObject simulationObject){
         
         this.simulationObject = simulationObject;
+        init();
     }
     
     public void init(){
 
-
-        flaeche = simulationObject.getParachuteArea();
          System.out.println("Fallschirmflaeche: " + flaeche + "Springerflaeche: " + springerFlaeche);
          r = 0.002;
+         g = 9.81;
+         cw = simulationObject.getCwStart();
+         springerFlaeche = simulationObject.getSpringerFlaeche();
+         calcSchritte();
+        
+    }
+
+    public void calcSchritte(){
+
+        differenzFlaeche = simulationObject.getParachuteArea()-simulationObject.getSpringerFlaecheStart();
+        anzahlSchritteBeimOeffnen = simulationObject.getTOeffnen()/simulationObject.getSchrittweiteH();
+        flaecheAddierenBeimOeffnen = differenzFlaeche/anzahlSchritteBeimOeffnen;
         
     }
 
@@ -42,8 +58,11 @@ private SimulationObject simulationObject;
     }
 
     public void calcSpringer(){
-        double[] yAnfang = {100, 1000, 5,-5};
-        double[][] result = fTable(0, simulationObject.getSchrittweiteH(), 1000, 0, yAnfang, simulationObject.getSchrittweiteH());
+        
+        double[] yAnfang = {0, simulationObject.getAltitude(), simulationObject.getPlaneSpeed(),0};
+
+        double[][] result = fTable(0, simulationObject.getSchrittweiteResult(), simulationObject.getTEnde(), 0, yAnfang, simulationObject.getSchrittweiteH());
+
         double KoNull =0;
         
         int n = result.length;
@@ -59,13 +78,21 @@ private SimulationObject simulationObject;
                 }
             }
 
-         if(KoNull != 110){
+         
+         if(KoNull != simulationObject.getLandePunkt()){
 
-            yAnfang[0] = yAnfang[0] -(KoNull-110);
-            System.out.println(yAnfang[0]);
-            result = fTable(0, simulationObject.getSchrittweiteH(), 1000, 0, yAnfang, simulationObject.getSchrittweiteH());
+            init();
+            yAnfang[0] = yAnfang[0] -(KoNull-(simulationObject.getLandePunkt()+1));
+
+           
+
+            result = fTable(0, simulationObject.getSchrittweiteResult(), simulationObject.getTEnde(), 0, yAnfang, simulationObject.getSchrittweiteH());
 
              for(int i = 0; i< n;i++){
+
+                if(simulationObject.getMaxSpringerGeschwindigkeit() > result[i][3]){
+                    simulationObject.setMaxSpringerGeschwindigkeit(result[i][3]);
+                }
 
                 if(result[i][1] <= 0){
 
@@ -115,6 +142,9 @@ private SimulationObject simulationObject;
 
         simulationObject.setResult(resultnew);
         
+        simulationObject.setResultAbsprungPunkt(yAnfang[0]);
+        simulationObject.setSpringerFlaeche(springerFlaeche);
+        simulationObject.setCwEnde(cw);
     }
 
     
@@ -177,30 +207,32 @@ private SimulationObject simulationObject;
         return res;
     }
 
-//    public double calcWiderstand(double t, double p, double A){
-//
-//        return calcCW(t) * 0.5 * p * calcFlaeche(t,A); // r(t) = cw(t) * 0.5 * p * A(t)
-//
-//    }
-//
-//    public double calcCW(double t){
-//
-//        if(t > 20 && t < 22 ){
-//            cw = 40;
-//        }
-//        return cw;
-//
-//    }
-//
-//    public double calcFlaeche(double t, double A){
-//
-//        if(t > 20 && t < 22){
-//
-//            A = A + 0.5;
-//        }
-//        return A;
-//
-//    }
+    public void calcWiderstand(double t){
+
+        r = calcCW(t) * 0.5 * 1.2 * calcFlaeche(t); // r(t) = cw(t) * 0.5 * p * A(t)
+        System.out.println("Widerstand: " + r + "Fläche: " + springerFlaeche + " " + " CW: " + cw + " ");
+
+    }
+
+    public double calcCW(double t){
+
+        if(t >= simulationObject.getTOffen() && t < (simulationObject.getTOffen()+simulationObject.getTOeffnen()) ){
+            cw = cw + 0.2;
+        }
+        return cw;
+
+    }
+
+    public double calcFlaeche(double t){
+
+        if(t >= simulationObject.getTOffen() && t < (simulationObject.getTOffen()+simulationObject.getTOeffnen())){
+            counter++;
+            System.out.println("                                                        COUNTER " +counter);
+            springerFlaeche = springerFlaeche + flaecheAddierenBeimOeffnen;
+        }
+        return springerFlaeche;
+
+    }
 
 /***********************************************************************/
 /* Numerische Integration von Differentialgleichungen:                 */
@@ -233,31 +265,8 @@ private SimulationObject simulationObject;
 
         for (i=1;  i<=n; i++)
         {
- if(t >= 20 && t <= 22){
 
-                cw = cw + 0.2;
-                r = cw * 0.5 * 1.2 * flaeche;
-                flaeche = flaeche + 0.5;
-
-                System.out.print("Widerstand: " + r + "Fläche: " + flaeche + " " + " CW: " + cw + " ");
-                //r = r + 0.0005;
-              // System.out.print("Widerstand: " + r + " ");
-
-            }
-             else{
-                 r = cw * 0.5 * 1.2 * flaeche;
-                 System.out.print("Widerstand: " + r + "Fläche: " + flaeche + " " + " CW: " + cw + " ");
-             }
-             if(t > 10 && t < 20){
-
-                r = r + 0.05;
-                System.out.println("Widerstand: " + r + " Zeit " + t);
-            }
-
-            else{
-
-                System.out.println("Widerstand: " + r + " Zeit " + t);
-            }
+             calcWiderstand(t);
  
             ka = w(t,y);
             //ya = y + h/2*ka;

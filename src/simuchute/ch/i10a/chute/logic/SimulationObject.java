@@ -18,6 +18,7 @@ public class SimulationObject {
     private double luftDichte; // kg/m^3
     private double springerGeschwindigkeit; //
     private double springerFlaeche; //
+    private double springerFlaecheStart;
     private double tOeffnen; //
     private double tOffen;
     private double tEnde;
@@ -25,6 +26,40 @@ public class SimulationObject {
     private double schrittweiteH; //
     private double[][] result;
     private double[][] flugbahn;
+    private double landePunkt;
+    private double resultAbprungPunkt;
+    private double schrittweiteResult;
+    private double maxSpringerGeschwindigkeit;
+    private double cwStart;
+    private double cwEnde;
+
+
+    public double getCwStart(){
+        return cwStart;
+    }
+
+    public double getCwEnde(){
+        return cwEnde;
+    }
+    public double getMaxSpringerGeschwindigkeit(){
+        return maxSpringerGeschwindigkeit;
+    }
+
+    public double getSpringerFlaecheStart(){
+        return springerFlaecheStart;
+    }
+
+    public double getSchrittweiteResult(){
+        return schrittweiteResult;
+    }
+
+    public double getResultAbsprungPunkt(){
+        return resultAbprungPunkt;
+    }
+
+    public double getLandePunkt(){
+        return landePunkt;
+    }
 
     public double[][] getFlugbahn(){
         return flugbahn;
@@ -97,8 +132,33 @@ public class SimulationObject {
         altitude = alt;
     }
 
+    public void setCwEnde(double cwEnde){
+        this.cwEnde = cwEnde;
+    }
+
+    public void setCwStart(double cwStart){
+        this.cwStart = cwEnde;
+    }
+    
+    public void setSpringerFlaecheStart(double springerFlaecheStart){
+        this.springerFlaecheStart = springerFlaecheStart;
+    }
+    public void setMaxSpringerGeschwindigkeit(double maxSpringerGeschwindigkeit){
+        this.maxSpringerGeschwindigkeit = maxSpringerGeschwindigkeit;
+    }
+    public void setLandePunkt(double landePunkt){
+        this.landePunkt = landePunkt;
+    }
+
+    public void setSchrittweiteResult(double schrittweiteResult){
+        this.schrittweiteResult = schrittweiteResult;
+    }
     public void setSchrittweite(double schrittweite){
         this.schrittweiteH = schrittweite;
+    }
+
+    public void setResultAbsprungPunkt(double resultAbprungPunkt){
+        this.resultAbprungPunkt = resultAbprungPunkt;
     }
 
     public void setResult(double[][] result){

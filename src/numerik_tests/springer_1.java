@@ -14,8 +14,7 @@ public class springer_1 extends linalg4_4
 // Zugang zu  Methoden aus der Linearen Algebra
 {
 double r = 0.002;
-double rx = 0.002;
-double g = 10;
+double g = 9.81;
 double m = 80;
 double cw = 0.5;
 double flaeche = 0.5;
