@@ -235,8 +235,31 @@ private SimulationObject simulationObject;
     {
         double[]res = new double[4];
 
-        res[0] =  simulationObject.getWindSpeed();
-        res[1] =  0;
+        if(z[1] < 5000){
+            res[0] =  simulationObject.getWindSpeed();
+            res[1] =  0;
+
+        }
+        
+        if(z[1] < 4000){
+            res[0] = -10;
+            res[1] = -20;
+        }
+
+        if(z[1] < 3000){
+            res[0] = 10;
+            res[1] = 20;
+        }
+
+        if(z[1] < 2000){
+            res[0] = 25;
+            res[1] = -5;
+        }
+
+        if(z[1] < 1000){
+            res[0] = 2;
+            res[1] = 0;
+        }
 
         return res;
     }
@@ -414,13 +437,13 @@ private SimulationObject simulationObject;
             y[i][4] = t[i];
             
         }
-//
-//      for (int i=0; i<=n-1; i++)
-//        {   System.out.print (i+"\t"+t[i]+"\t");
-//            for (int j=0; j<m; j++)
-//                System.out.print (+y[i][j]+"\t");
-//            System.out.println();
-//        }
+
+      for (int i=0; i<=n-1; i++)
+        {   System.out.print (i+"\t"+t[i]+"\t");
+            for (int j=0; j<m; j++)
+                System.out.print (+y[i][j]+"\t");
+            System.out.println();
+        }
         return y;
     }
 
