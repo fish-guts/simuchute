@@ -14,17 +14,17 @@ public class Springer extends linalg4_4
 
 
 {
-double r;
-double g;
-double cw;
-double springerFlaeche;
-double m;
-double A;
-double flaeche;
-double differenzFlaeche;
-double anzahlSchritteBeimOeffnen;
-double flaecheAddierenBeimOeffnen;
-int counter;
+private double r;
+private double g;
+private double cw;
+private double springerFlaeche;
+private double m;
+private double flaeche;
+private double differenzFlaeche;
+private double anzahlSchritteBeimOeffnen;
+private double flaecheAddierenBeimOeffnen;
+private double cwAddierenBeimOeffnen;
+private double cwDifferenz;
 
 private SimulationObject simulationObject;
 
@@ -47,9 +47,16 @@ private SimulationObject simulationObject;
 
     public void calcSchritte(){
 
-        differenzFlaeche = simulationObject.getParachuteArea()-simulationObject.getSpringerFlaecheStart();
+        // Schrittweite Berechnen für Flächen und cw Funktion
         anzahlSchritteBeimOeffnen = simulationObject.getTOeffnen()/simulationObject.getSchrittweiteH();
+
+        // Schrittflächen berechnen für Flächenfunktion
+        differenzFlaeche = simulationObject.getParachuteArea()-simulationObject.getSpringerFlaecheStart();
         flaecheAddierenBeimOeffnen = differenzFlaeche/anzahlSchritteBeimOeffnen;
+
+        // Schrittflächen berechnen für cw Funktion
+        cwDifferenz = simulationObject.getCwEnde()-simulationObject.getCwStart();
+        cwAddierenBeimOeffnen = cwDifferenz/anzahlSchritteBeimOeffnen;
         
     }
 
@@ -58,104 +65,128 @@ private SimulationObject simulationObject;
     }
 
     public void calcSpringer(){
-        
+
+        // {xStart-Koordinate, yStart-Koordinate (Flüghöhe), Flugzeuggeschwindigkeit = Springer Startgeschwindigkeit, yStart Geschwindigkeit Springer}
         double[] yAnfang = {0, simulationObject.getAltitude(), simulationObject.getPlaneSpeed(),0};
 
+        // Berechnungen starten, erste drei Werte für TabellenAusgabe: tStart, tSchrittweite, tEnde,
+        // Danach xStart Koordinate, yAnfang Werte (siehe oben), Genauigkeit der Berechnungen.
         double[][] result = fTable(0, simulationObject.getSchrittweiteResult(), simulationObject.getTEnde(), 0, yAnfang, simulationObject.getSchrittweiteH());
 
+        // Variable für Lösungssuche des Landepunktes
         double KoNull =0;
-        
+
+
+        // Schlaufe: Suchen des letzten Punktes, welcher über xKoordinate 0 ist = Landepunkte.
+        // Danach Schleife verlassen und Wert in KoNull abspeichern
         int n = result.length;
 
-            for(int i = 0; i< n;i++){
+        for(int i = 0; i< n;i++){
 
-                if(result[i][1] <= 0){
+            // Abbruch Bedingung
+            if(result[i][1] <= 0){
 
-                    System.out.println("End Resultat: " + result[i][0] + " " + result[i][1]);
-                    KoNull = result[i][0];
-                    i = n;
-
-                }
-            }
-
-         
-         if(KoNull != simulationObject.getLandePunkt()){
-
-            init();
-            yAnfang[0] = yAnfang[0] -(KoNull-(simulationObject.getLandePunkt()+1));
-
-           
-
-            result = fTable(0, simulationObject.getSchrittweiteResult(), simulationObject.getTEnde(), 0, yAnfang, simulationObject.getSchrittweiteH());
-
-             for(int i = 0; i< n;i++){
-
-                if(simulationObject.getMaxSpringerGeschwindigkeit() > result[i][3]){
-                    simulationObject.setMaxSpringerGeschwindigkeit(result[i][3]);
-                }
-
-                if(result[i][1] <= 0){
-
-                System.out.println("End Resultat: " + result[i][0] + " " + result[i][1]);
-                System.out.println(yAnfang[0]);
                 KoNull = result[i][0];
                 i = n;
 
+            }
+        }
+
+        // Berchneter Landepunkt vergleichen mit gewünschtem Landepunkt
+        // Differenz abziehen und Simulation nochmals laufen lassen
+        if (KoNull != simulationObject.getLandePunkt()) {
+
+            // InitialWerte werden nochmals gesetzt. Widerstand, Fläche etc..
+            init();
+
+            // Neuer SpringerAbsprungpunkt wird festgelegt
+            yAnfang[0] = yAnfang[0] - (KoNull - (simulationObject.getLandePunkt() + 1));
+
+            // Neue Berechnung
+            result = fTable(0, simulationObject.getSchrittweiteResult(), simulationObject.getTEnde(), 0, yAnfang, simulationObject.getSchrittweiteH());
+
+            for (int i = 0; i < n; i++) {
+
+                // Maximale Geschwindigkeit auslesen
+                if (simulationObject.getMaxSpringerGeschwindigkeit() > result[i][3]) {
+                    simulationObject.setMaxSpringerGeschwindigkeit(result[i][3]);
+                }
+
+                // Abbruch Bedingung
+                if (result[i][1] <= 0) {
+
+                    i = n;
+                    
                 }
             }
-          }
+        }
 
-        n=result.length;
+        // Unnötige Werte abschneiden und Resultat abspeichern
+        simulationObject.setResult(formatResult(result));
+
+        // Springer End Geschwindigkeit ermitteln
+        getSpringerEndGeschwindigkeit(formatResult(result));
+
+        // Resultat des Absprungs abspeichern
+        simulationObject.setResultAbsprungPunkt(yAnfang[0]);
+
+        // Berechnete Springer Fläche abspeichern
+        simulationObject.setSpringerFlaeche(springerFlaeche);
+
+        // Berechneter cw Wert abspeichern
+        simulationObject.setCwEnde(cw);
+    }
+
+    // Springer End Geschwindigkeit ermitteln
+    public void getSpringerEndGeschwindigkeit(double[][] result){
+
+        int n = result.length;
+        simulationObject.setSpringerEndGeschwindigkeit(result[n-1][3]);
+        
+    }
+
+    // Unnötige Werte abschneiden
+    public double[][] formatResult(double[][] result) {
+
+        int n = result.length;
 
         int o = 0;
-        for(int i =0; i<n;i++){
+        for (int i = 0; i < n; i++) {
 
 
-            if(result[i][1]<=0){
-
-
-            }
-            else{
+            if (result[i][1] <= 0) {
+            } else {
                 o++;
             }
         }
         double[][] resultnew = new double[o][4];
-        for(int i =0; i<n;i++){
+        for (int i = 0; i < n; i++) {
 
 
-            if(result[i][1]<=0){
+            if (result[i][1] <= 0) {
                 o++;
 
-            }
-            else{
+            } else {
 
-            resultnew[i][0] = result[i][0];
-            resultnew[i][1] = result[i][1];
-            resultnew[i][2] = result[i][2];
-            resultnew[i][3] = result[i][3];
+                resultnew[i][0] = result[i][0];
+                resultnew[i][1] = result[i][1];
+                resultnew[i][2] = result[i][2];
+                resultnew[i][3] = result[i][3];
 
             }
         }
 
-        System.out.println(" NEUES ARRAYY                      NEU ARRAY");
-        Tools.printArray2D(resultnew);
-
-        simulationObject.setResult(resultnew);
+        // Letzter xWert wird gerundet
+        n = resultnew.length;
+        resultnew[n-1][1]= Math.round(resultnew[n-1][1]);
         
-        simulationObject.setResultAbsprungPunkt(yAnfang[0]);
-        simulationObject.setSpringerFlaeche(springerFlaeche);
-        simulationObject.setCwEnde(cw);
-    }
+        return resultnew;
 
-    
+    }
 /***********************************************************************/
 /* Funktionen zur Definition  von Differentialgleichungen z'=w(t,z)    */
 /*            für Funktion z=f(t)                                      */
 /***********************************************************************/
-
-    /**     Beispiel 3: Flug einer Kugel  mit Reibung im Wind   */
-    /**     (Bewegung in einer Ebene)  */
-    /**     Anfangswerte f�r Testlauf:  zAnfang={10, 0, 5, 12} */
 
     //Flug eines Fallschirmspringers mit Reibung im Wind. Öffnen des Fallschirmes
 
@@ -172,13 +203,6 @@ private SimulationObject simulationObject;
         /** Ableitungen der Zustandsgrössen **/
         double[]res = new double[4];
 
-        /** Systemgr�ssen **/
-
-        
-        /** Einflussgr�ssen **/
-        /** Funktion wind **/
-
-        /** Hilfssgr�ssen **/
         /** u = Geschwindigkeit Springer gegenüber bewegter Luft **/
         double[]u = new double[2];
         double uBetrag;
@@ -196,17 +220,18 @@ private SimulationObject simulationObject;
         return res;
     }
 
+    // Windfunktion wind(t,z)
     public double[] wind (double t, double[] z)
     {
         double[]res = new double[4];
 
-        res[0] =  10;
+        res[0] =  4;
         res[1] =  0;
-
 
         return res;
     }
 
+    // Widerstandsfunktion, r(t) = calcCW(t) * 0.5 * p * calcFlaeche(t)
     public void calcWiderstand(double t){
 
         r = calcCW(t) * 0.5 * 1.2 * calcFlaeche(t); // r(t) = cw(t) * 0.5 * p * A(t)
@@ -214,20 +239,22 @@ private SimulationObject simulationObject;
 
     }
 
+    // CW Funktion, Abhängig von der Fläche des Fallschirmes und der Zeit
     public double calcCW(double t){
 
         if(t >= simulationObject.getTOffen() && t < (simulationObject.getTOffen()+simulationObject.getTOeffnen()) ){
-            cw = cw + 0.2;
+            cw = cw + cwAddierenBeimOeffnen;
+ 
         }
         return cw;
 
     }
 
+    // Flächen Funktion, Abhängi von der Zeit
     public double calcFlaeche(double t){
 
         if(t >= simulationObject.getTOffen() && t < (simulationObject.getTOffen()+simulationObject.getTOeffnen())){
-            counter++;
-            System.out.println("                                                        COUNTER " +counter);
+            
             springerFlaeche = springerFlaeche + flaecheAddierenBeimOeffnen;
         }
         return springerFlaeche;
@@ -266,7 +293,8 @@ private SimulationObject simulationObject;
         for (i=1;  i<=n; i++)
         {
 
-             calcWiderstand(t);
+            // Widerstand berechnen und abspeichern in r
+            calcWiderstand(t);
  
             ka = w(t,y);
             //ya = y + h/2*ka;

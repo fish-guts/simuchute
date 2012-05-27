@@ -22,8 +22,10 @@ public class Tools {
 		
 		for(int i = 0; i < length; i++){
 			
-			System.out.print(array[i][0] + "   ");
-			System.out.println(array[i][1]);
+			System.out.print("yKO: " + array[i][0] + "   ");
+			System.out.print("xKO: " + array[i][1] + "   ");
+                        System.out.print("xGeschwindigkeit:  " + array[i][2] + "   ");
+                        System.out.println("yGeschwindigkeit:  " + array[i][3] + "   ");
 			
 		}
 		

@@ -22,16 +22,16 @@ public class Simulation {
         
         SimulationObject simulationobject = new SimulationObject();
         simulationobject.setAltitude(5000);
-        simulationobject.setParachuteArea(10);
+        simulationobject.setParachuteArea(20);
         simulationobject.setPlaneSpeed(30);
         simulationobject.setWindSpeed(50);
-        simulationobject.setSpringerGewicht(70);
+        simulationobject.setSpringerGewicht(90);
         simulationobject.setSpringerFlaecheStart(0.5);
         simulationobject.setSpringerFlaeche(simulationobject.getSpringerFlaecheStart());
         simulationobject.setParachuteTimeToOpen(2);
         simulationobject.setLuftDichte(1.2);
         simulationobject.setTOeffnen(2);
-        simulationobject.setTOffen(20);
+        simulationobject.setTOffen(25);
         simulationobject.setLuftDichte(1.2);
         simulationobject.setSchrittweite(0.1);
         simulationobject.setTAnfang(0);
@@ -39,6 +39,7 @@ public class Simulation {
         simulationobject.setLandePunkt(4000);
         simulationobject.setSchrittweiteResult(0.1);
         simulationobject.setCwStart(0.5);
+        simulationobject.setCwEnde(3.0);
         
 
         // Flugzeug wird erstellt und Flugbahn berechnet. 
@@ -59,9 +60,11 @@ public class Simulation {
         System.out.println(" Fallschirm öffnen dauert : " + simulationobject.getTOeffnen());
         System.out.println(" CW Start : " + simulationobject.getCwStart());
         System.out.println(" CW Ende : " + simulationobject.getCwEnde());
-        
+        System.out.println(" SPringer End Geschwindigkeit : " + simulationobject.getSpringerEndGeschwindigkeit());
+
+
         // Test Print, FlugzeugDaten?
-        //Tools.printArray2D(simulationobject.getFlugbahn());
+        Tools.printArray2D(simulationobject.getResult());
         
        
 

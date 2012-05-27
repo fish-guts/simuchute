@@ -32,7 +32,12 @@ public class SimulationObject {
     private double maxSpringerGeschwindigkeit;
     private double cwStart;
     private double cwEnde;
+    private double springerEndGeschwindigkeit;
 
+
+    public double getSpringerEndGeschwindigkeit(){
+        return springerEndGeschwindigkeit;
+    }
 
     public double getCwStart(){
         return cwStart;
@@ -137,9 +142,12 @@ public class SimulationObject {
     }
 
     public void setCwStart(double cwStart){
-        this.cwStart = cwEnde;
+        this.cwStart = cwStart;
     }
-    
+
+    public void setSpringerEndGeschwindigkeit(double springerEndGeschwindigkeit){
+        this.springerEndGeschwindigkeit = springerEndGeschwindigkeit;
+    }
     public void setSpringerFlaecheStart(double springerFlaecheStart){
         this.springerFlaecheStart = springerFlaecheStart;
     }
