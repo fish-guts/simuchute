@@ -14,11 +14,12 @@ public class Springer extends linalg4_4
 
 
 {
+
+// Variablen deklarieren
 private double r;
 private double g;
 private double cw;
 private double springerFlaeche;
-private double m;
 private double flaeche;
 private double differenzFlaeche;
 private double anzahlSchritteBeimOeffnen;
@@ -36,8 +37,6 @@ private SimulationObject simulationObject;
     
     public void init(){
 
-         System.out.println("Fallschirmflaeche: " + flaeche + "Springerflaeche: " + springerFlaeche);
-         r = 0.002;
          g = 9.81;
          cw = simulationObject.getCwStart();
          springerFlaeche = simulationObject.getSpringerFlaeche();
@@ -66,8 +65,8 @@ private SimulationObject simulationObject;
 
     public void calcSpringer(){
 
-        // {xStart-Koordinate, yStart-Koordinate (Flüghöhe), Flugzeuggeschwindigkeit = Springer Startgeschwindigkeit, yStart Geschwindigkeit Springer}
-        double[] yAnfang = {0, simulationObject.getAltitude(), simulationObject.getPlaneSpeed(),0};
+        // {xStart-Koordinate, yStart-Koordinate (Flüghöhe), Flugzeuggeschwindigkeit = Springer Startgeschwindigkeit, yStart Geschwindigkeit Springer, Laufzeit}
+        double[] yAnfang = {0, simulationObject.getAltitude(), simulationObject.getPlaneSpeed(),0,0};
 
         // Berechnungen starten, erste drei Werte für TabellenAusgabe: tStart, tSchrittweite, tEnde,
         // Danach xStart Koordinate, yAnfang Werte (siehe oben), Genauigkeit der Berechnungen.
@@ -121,12 +120,16 @@ private SimulationObject simulationObject;
             }
         }
 
+        result = formatResult(result);
+        
         // Unnötige Werte abschneiden und Resultat abspeichern
-        simulationObject.setResult(formatResult(result));
+        simulationObject.setResult(result);
 
         // Springer End Geschwindigkeit ermitteln
-        getSpringerEndGeschwindigkeit(formatResult(result));
+        getSpringerEndGeschwindigkeit(result);
 
+        // Springer Flugzeit auslesen
+        getSpringerFlugzeit(result);
         // Resultat des Absprungs abspeichern
         simulationObject.setResultAbsprungPunkt(yAnfang[0]);
 
@@ -145,6 +148,12 @@ private SimulationObject simulationObject;
         
     }
 
+    public void getSpringerFlugzeit(double[][] result){
+        int n = result.length;
+        simulationObject.setSpringerFlugzeit(result[n-1][4]);
+        
+    }
+
     // Unnötige Werte abschneiden
     public double[][] formatResult(double[][] result) {
 
@@ -159,7 +168,7 @@ private SimulationObject simulationObject;
                 o++;
             }
         }
-        double[][] resultnew = new double[o][4];
+        double[][] resultnew = new double[o][5];
         for (int i = 0; i < n; i++) {
 
 
@@ -172,6 +181,7 @@ private SimulationObject simulationObject;
                 resultnew[i][1] = result[i][1];
                 resultnew[i][2] = result[i][2];
                 resultnew[i][3] = result[i][3];
+                resultnew[i][4] = result[i][4];
 
             }
         }
@@ -201,7 +211,7 @@ private SimulationObject simulationObject;
         /** z[3] = y-Komponente des Geschwindigkeitsvektors **/
 
         /** Ableitungen der Zustandsgrössen **/
-        double[]res = new double[4];
+        double[]res = new double[5];
 
         /** u = Geschwindigkeit Springer gegenüber bewegter Luft **/
         double[]u = new double[2];
@@ -225,7 +235,7 @@ private SimulationObject simulationObject;
     {
         double[]res = new double[4];
 
-        res[0] =  4;
+        res[0] =  simulationObject.getWindSpeed();
         res[1] =  0;
 
         return res;
@@ -235,7 +245,7 @@ private SimulationObject simulationObject;
     public void calcWiderstand(double t){
 
         r = calcCW(t) * 0.5 * 1.2 * calcFlaeche(t); // r(t) = cw(t) * 0.5 * p * A(t)
-        System.out.println("Widerstand: " + r + "Fläche: " + springerFlaeche + " " + " CW: " + cw + " ");
+        //System.out.println("Widerstand: " + r + "Fläche: " + springerFlaeche + " " + " CW: " + cw + " ");
 
     }
 
@@ -250,7 +260,7 @@ private SimulationObject simulationObject;
 
     }
 
-    // Flächen Funktion, Abhängi von der Zeit
+    // Flächen Funktion, Abhängig von der Zeit
     public double calcFlaeche(double t){
 
         if(t >= simulationObject.getTOffen() && t < (simulationObject.getTOffen()+simulationObject.getTOeffnen())){
@@ -350,7 +360,7 @@ private SimulationObject simulationObject;
     public double[][] yTable  ( double[] t, double tAnfang,double[] yAnfang, double h)
     {
         int n = t.length;
-        int m = yAnfang.length;
+        int m = yAnfang.length+1;
 
         int i = 0;
 
@@ -395,13 +405,22 @@ private SimulationObject simulationObject;
 
         double[][]y =  yTable  (t, tAnfang, yAnfang, h);
 
-        for (int i=0; i<=n-1; i++)
-        {   System.out.print (i+"\t"+t[i]+"\t");
-            for (int j=0; j<m; j++)
-                System.out.print (+y[i][j]+"\t");
-            System.out.println();
-        }
+  
 
+        // Laufzeit den Werten zu ordnen
+        for (int i=0; i<=n-1; i++)
+        {
+
+            y[i][4] = t[i];
+            
+        }
+//
+//      for (int i=0; i<=n-1; i++)
+//        {   System.out.print (i+"\t"+t[i]+"\t");
+//            for (int j=0; j<m; j++)
+//                System.out.print (+y[i][j]+"\t");
+//            System.out.println();
+//        }
         return y;
     }
 

@@ -33,6 +33,11 @@ public class SimulationObject {
     private double cwStart;
     private double cwEnde;
     private double springerEndGeschwindigkeit;
+    private double springerFlugzeit;
+
+    public double getSpringerFlugzeit(){
+        return springerFlugzeit;
+    }
 
 
     public double getSpringerEndGeschwindigkeit(){
@@ -135,6 +140,10 @@ public class SimulationObject {
      */
     public void setAltitude(double alt) {
         altitude = alt;
+    }
+
+    public void setSpringerFlugzeit(double springerFlugzeit){
+        this.springerFlugzeit = springerFlugzeit;
     }
 
     public void setCwEnde(double cwEnde){
