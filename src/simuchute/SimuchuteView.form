@@ -167,6 +167,7 @@
                                                           <Component id="jumperAreaValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                           <Component id="jumperWeightValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                           <Component id="timeToOpenValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="timeWhenToOpenValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
@@ -217,12 +218,7 @@
                               <EmptySpace min="-2" pref="364" max="-2" attributes="0"/>
                           </Group>
                           <Component id="timeToOpenLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="timeWhenToOpenLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="245" max="32767" attributes="0"/>
-                              <Component id="timeWhenToOpenValueLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="419" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="timeWhenToOpenLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -296,8 +292,8 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="timeWhenToOpenLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="timeWhenToOpenValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="timeWhenToOpenValue" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="timeWhenToOpenValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -385,8 +381,10 @@
             </Component>
             <Component class="javax.swing.JSlider" name="altitudeValue">
               <Properties>
-                <Property name="maximum" type="int" value="9680"/>
-                <Property name="minimum" type="int" value="3000"/>
+                <Property name="maximum" type="int" value="5000"/>
+                <Property name="minimum" type="int" value="1200"/>
+                <Property name="paintTicks" type="boolean" value="true"/>
+                <Property name="snapToTicks" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="altitudeValue" noResource="true"/>
               </Properties>
               <Events>

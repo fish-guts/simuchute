@@ -34,7 +34,7 @@ public class SimuchuteView extends FrameView {
         initComponents();
         jumper.setVisible(false);
         plane.setVisible(false);
-        altitudeValueLabel.setText("3000 m");
+        altitudeValueLabel.setText("1200 m");
         currentPositionLabel.setVisible(false);
         currentPositionLabelX.setVisible(false);
         currentPositionLabelY.setVisible(false);
@@ -217,8 +217,10 @@ public class SimuchuteView extends FrameView {
         altitudeValueLabel.setText(resourceMap.getString("altitudeValueLabel.text")); // NOI18N
         altitudeValueLabel.setName("altitudeValueLabel"); // NOI18N
 
-        altitudeValue.setMaximum(9680);
-        altitudeValue.setMinimum(3000);
+        altitudeValue.setMaximum(5000);
+        altitudeValue.setMinimum(1200);
+        altitudeValue.setPaintTicks(true);
+        altitudeValue.setSnapToTicks(true);
         altitudeValue.setName("altitudeValue"); // NOI18N
         altitudeValue.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -374,7 +376,8 @@ public class SimuchuteView extends FrameView {
                                                     .addComponent(airDensityValueLabel)
                                                     .addComponent(jumperAreaValueLabel)
                                                     .addComponent(jumperWeightValueLabel)
-                                                    .addComponent(timeToOpenValueLabel))))
+                                                    .addComponent(timeToOpenValueLabel)
+                                                    .addComponent(timeWhenToOpenValueLabel))))
                                         .addGap(2, 2, 2)))
                                 .addGap(29, 29, 29))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -406,11 +409,7 @@ public class SimuchuteView extends FrameView {
                                 .addGap(119, 119, 119)))
                         .addGap(364, 364, 364))
                     .addComponent(timeToOpenLabel)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(timeWhenToOpenLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
-                        .addComponent(timeWhenToOpenValueLabel)
-                        .addGap(419, 419, 419))))
+                    .addComponent(timeWhenToOpenLabel)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -467,8 +466,8 @@ public class SimuchuteView extends FrameView {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(timeWhenToOpenLabel)
-                    .addComponent(timeWhenToOpenValueLabel)
-                    .addComponent(timeWhenToOpenValue, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(timeWhenToOpenValue, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timeWhenToOpenValueLabel))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tempPosX)
@@ -729,7 +728,7 @@ public class SimuchuteView extends FrameView {
             Point jumperLocation = new Point();
             Point planeLocation = new Point();
             // Startkoordinaten von Flugzeug
-            double coordinatePerDot = (double)700/(double)9680;
+            double coordinatePerDot = (double)700/(double)5000;
             planeLocation.setLocation(0,(700-coordinatePerDot*sim.getAltitude()));
             plane.setLocation(planeLocation);
             jumper.setVisible(true);
