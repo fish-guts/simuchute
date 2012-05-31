@@ -1,10 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package simuchute.ch.i10a.chute.threads;
 
 import java.awt.Point;
+import java.util.Timer;
+import java.util.TimerTask;
 import simuchute.SimuchuteView;
 import simuchute.ch.i10a.chute.logic.SimulationObject;
 
@@ -22,6 +20,9 @@ public class ChuteRunnableTwo implements Runnable {
         this.sim = sim;
     }
 
+    /**
+     * die Hauptmethode in diesem Thread
+     */
     public void run() {
         Point jumperLocation = new Point();
         double coordinatePerDot = (double) 700 / (double) 5000;
@@ -31,24 +32,24 @@ public class ChuteRunnableTwo implements Runnable {
         double result[][] = this.sim.getResult();
         do {
             try {
-                Thread.sleep(20);
+                Thread.sleep(100);
                 jumperLocation.setLocation((result[i][0] / 10), 700 - coordinatePerDot * result[i][1]);
                 moveJumper(jumperLocation);
-                this.view.currentPositionValueX.setText(new Double(result[i][0]/10).toString());
+                this.view.currentPositionValueX.setText(new Double(result[i][0] / 10).toString());
                 this.view.currentPositionValueY.setText(new Double(700 - coordinatePerDot * result[i][1]).toString());
             } catch (Exception e) {
             }
             i++;
         } while (jumperLocation.getY() > 2);
     }
+    /**
+     * moveJumper: Bewegt die Springergrafik auf dem GUI
+     * @param location: Point Objekt, welches die Koordinaten beinhaltet, an welches
+     * die Grafik verschoben werden soll. 
+     */
     public void moveJumper(Point location) {
         this.view.jumper.setVisible(true);
         this.view.jumper.setLocation(location);
 
-    }
-
-
-    public Point getCurrentPlaneLocation() {
-        return new Point();
     }
 }

@@ -669,11 +669,10 @@ public class SimuchuteView extends FrameView {
             sim.setParachuteTimeToOpen(new Integer(view.timeToOpenValue.getText()));
             sim.setSpringerFlaeche(new Double(view.jumperAreaValue.getText()));
             sim.setLuftDichte(new Double(view.airDensityValue.getText()));
-            sim.setTOeffnen(new Double(view.timeWhenToOpenValue.getText()));
+            sim.setTOffen(new Double(view.timeWhenToOpenValue.getText()));
             // statische Anfangswerte, die wir nicht dynamisch haben wollen.
             sim.setSpringerFlaecheStart(0.5);
             sim.setTOeffnen(2);
-            sim.setTOffen(69);
             sim.setSchrittweite(0.1);
             sim.setTAnfang(0);
             sim.setTEnde(1000);

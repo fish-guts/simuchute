@@ -23,7 +23,7 @@ public class Simulation {
         SimulationObject simulationobject = new SimulationObject();
         simulationobject.setAltitude(5000);
         simulationobject.setParachuteArea(20);
-        simulationobject.setPlaneSpeed(30);
+        simulationobject.setPlaneSpeed(70);
         simulationobject.setWindSpeed(4);
         simulationobject.setSpringerGewicht(90);
         simulationobject.setSpringerFlaecheStart(0.5);
@@ -31,7 +31,7 @@ public class Simulation {
         simulationobject.setParachuteTimeToOpen(2);
         simulationobject.setLuftDichte(1.2);
         simulationobject.setTOeffnen(2);
-        simulationobject.setTOffen(69);
+        simulationobject.setTOffen(19);
         simulationobject.setLuftDichte(1.2);
         simulationobject.setSchrittweite(0.1);
         simulationobject.setTAnfang(0);

@@ -71,7 +71,6 @@ private SimulationObject simulationObject;
         // Berechnungen starten, erste drei Werte für TabellenAusgabe: tStart, tSchrittweite, tEnde,
         // Danach xStart Koordinate, yAnfang Werte (siehe oben), Genauigkeit der Berechnungen.
         double[][] result = fTable(0, simulationObject.getSchrittweiteResult(), simulationObject.getTEnde(), 0, yAnfang, simulationObject.getSchrittweiteH());
-
         // Variable für Lösungssuche des Landepunktes
         double KoNull =0;
 
@@ -242,22 +241,22 @@ private SimulationObject simulationObject;
         }
         
         if(z[1] < 4000){
-            res[0] = -10;
-            res[1] = -20;
+            res[0] = 10;
+            res[1] = 0;
         }
 
         if(z[1] < 3000){
-            res[0] = 10;
+            res[0] = 20;
             res[1] = 20;
         }
 
         if(z[1] < 2000){
             res[0] = 25;
-            res[1] = -5;
+            res[1] = 0;
         }
 
         if(z[1] < 1000){
-            res[0] = 2;
+            res[0] = -30;
             res[1] = 0;
         }
 

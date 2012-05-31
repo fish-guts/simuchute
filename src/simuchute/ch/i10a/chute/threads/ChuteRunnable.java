@@ -23,7 +23,6 @@ public class ChuteRunnable implements Runnable {
     }
 
     public void run() {
-
         boolean go4Jump = false;
         boolean jumpFinished = false;
         Point planeLocation = new Point();
