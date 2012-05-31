@@ -17,6 +17,7 @@ import javax.swing.JDialog;
 import javax.swing.Timer;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import simuchute.ch.i10a.chute.logic.Flugzeug;
 import simuchute.ch.i10a.chute.logic.SimulationObject;
 import simuchute.ch.i10a.chute.logic.Springer;
 import simuchute.ch.i10a.chute.tools.Helper;
@@ -181,7 +182,7 @@ public class SimuchuteView extends FrameView {
         plane.setIcon(resourceMap.getIcon("plane.icon")); // NOI18N
         plane.setText(resourceMap.getString("plane.text")); // NOI18N
         plane.setName("plane"); // NOI18N
-        plane.setBounds(580, 270, 20, 30);
+        plane.setBounds(1010, 700, 20, 30);
         jLayeredPane1.add(plane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         coordinateLayer.setIcon(resourceMap.getIcon("coordinateLayer.icon")); // NOI18N
@@ -683,14 +684,13 @@ public class SimuchuteView extends FrameView {
             sim.setCwEnde(3.0);
             view.startButton.setEnabled(false);
             view.calcLabel.setVisible(true);
-          Point pt = plane.getLocation();
+            Point pt = plane.getLocation();
             tempPosX.setText(new Double(pt.getX()).toString());
             tempPosY.setText(new Double(pt.getY()).toString());
-            // Flugzeug wird erstellt und Flugbahn berechnet.
-            //Flugzeug flugzeug = new Flugzeug();
-            //simulationobject = flugzeug.calcFlugbahn(simulationobject);
             // Springer Object erstellen und mit Werten abfüllen
             Springer springer = new Springer(sim);
+
+
 
             // Flugbahn etc berechnen
             springer.calcSpringer();
@@ -699,7 +699,7 @@ public class SimuchuteView extends FrameView {
             sim = springer.getFlugbahnSpringer();
 
             // Test Print, Springerflugbahn
-            Tools.printArrayInTextArea(view,sim.getResult());
+            Tools.printArrayInTextArea(view, sim.getResult());
 
 
             // Werte anzeigen nach Berechnen
@@ -725,23 +725,17 @@ public class SimuchuteView extends FrameView {
             view.startButton.setEnabled(true);
 
             // Berechnungen sind Fertig, nun Simulieren wir den Sprung
-
             double[][] result = sim.getResult();
             Point jumperLocation = new Point();
+            Point planeLocation = new Point();
+            // Startkoordinaten von Flugzeug
+            double coordinatePerDot = (double)700/(double)9680;
+            planeLocation.setLocation(0,(700-coordinatePerDot*sim.getAltitude()));
+            plane.setLocation(planeLocation);
             jumper.setVisible(true);
-            for(int i = 0; i<result.length;i++) {
-                try {
-                    // Intervall festlegen: Wieviele Korodinaten Fliegt er Pro Sekunde ab. 
-                    double interval = (result.length / sim.getSpringerFlugzeit());
-                    Thread.sleep((int)interval);
-                    jumperLocation.setLocation(result[i][0]/10,result[result.length-i][1]/10);
-                    jumper.setLocation(jumperLocation);
-                    currentPositionValueX.setText(new Double(result[i][0]/10).toString());
-                    currentPositionValueY.setText(new Double(result[result.length-i][1]).toString());
-                } catch(Exception e) {
-                }
+            plane.setVisible(true);
 
-            }
+
             return null;
         }
 
