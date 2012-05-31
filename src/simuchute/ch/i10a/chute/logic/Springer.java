@@ -437,7 +437,6 @@ private SimulationObject simulationObject;
             y[i][4] = t[i];
             
         }
-
       for (int i=0; i<=n-1; i++)
         {   System.out.print (i+"\t"+t[i]+"\t");
             for (int j=0; j<m; j++)

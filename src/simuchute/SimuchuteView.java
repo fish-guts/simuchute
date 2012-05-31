@@ -176,7 +176,7 @@ public class SimuchuteView extends FrameView {
         jumper.setIcon(resourceMap.getIcon("jumper.icon")); // NOI18N
         jumper.setText(resourceMap.getString("jumper.text")); // NOI18N
         jumper.setName("jumper"); // NOI18N
-        jumper.setBounds(350, 10, 38, 38);
+        jumper.setBounds(240, 180, 38, 38);
         jLayeredPane1.add(jumper, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         plane.setIcon(resourceMap.getIcon("plane.icon")); // NOI18N
@@ -730,7 +730,6 @@ public class SimuchuteView extends FrameView {
             plane.setVisible(true);
             Thread planeThread = new Thread(new ChuteRunnable(view,sim));
             planeThread.start();
-            planeThread.run();
 
             return null;
         }

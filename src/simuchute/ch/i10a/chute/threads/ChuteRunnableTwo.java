@@ -12,53 +12,41 @@ import simuchute.ch.i10a.chute.logic.SimulationObject;
  *
  * @author Fish-Guts
  */
-public class ChuteRunnable implements Runnable {
+public class ChuteRunnableTwo implements Runnable {
 
     private SimuchuteView view;
     private SimulationObject sim;
 
-    public ChuteRunnable(SimuchuteView view, SimulationObject sim) {
+    public ChuteRunnableTwo(SimuchuteView view, SimulationObject sim) {
         this.view = view;
         this.sim = sim;
     }
 
     public void run() {
-
-        boolean go4Jump = false;
-        boolean jumpFinished = false;
-        Point planeLocation = new Point();
         Point jumperLocation = new Point();
         double coordinatePerDot = (double) 700 / (double) 5000;
         double yCoord = (700 - coordinatePerDot * sim.getAltitude());
-        double result[][] = this.sim.getResult();
         // Startkoordinaten von Flugzeug
         int i = 0;
-        int j = 0;
+        double result[][] = this.sim.getResult();
         do {
             try {
-                Thread.sleep(1);
-                planeLocation.setLocation((i * this.sim.getPlaneSpeed() / 1000), yCoord);
-                if ((planeLocation.getX() > sim.getResultAbsprungPunkt() / 10) && (go4Jump == false)) {
-                    go4Jump = true;
-                    initNewThread();
-            }
-                movePlane(planeLocation);
+                Thread.sleep(20);
+                jumperLocation.setLocation((result[i][0] / 10), 700 - coordinatePerDot * result[i][1]);
+                moveJumper(jumperLocation);
+                this.view.currentPositionValueX.setText(new Double(result[i][0]/10).toString());
+                this.view.currentPositionValueY.setText(new Double(700 - coordinatePerDot * result[i][1]).toString());
             } catch (Exception e) {
             }
             i++;
-        } while (jumpFinished==false);
-    }
-
-    public void movePlane(Point location) {
-        this.view.plane.setLocation(location);
+        } while (jumperLocation.getY() > 2);
     }
     public void moveJumper(Point location) {
+        this.view.jumper.setVisible(true);
         this.view.jumper.setLocation(location);
+
     }
-    public void initNewThread() {
-        Thread jumperThread = new Thread(new ChuteRunnableTwo(this.view, this.sim));
-        jumperThread.start();
-    }
+
 
     public Point getCurrentPlaneLocation() {
         return new Point();
