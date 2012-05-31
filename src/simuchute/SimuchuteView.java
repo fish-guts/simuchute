@@ -3,7 +3,6 @@ package simuchute;
 /*
  * SimuchuteView.java
  */
-import java.awt.Point;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -17,9 +16,8 @@ import javax.swing.JDialog;
 import javax.swing.Timer;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import numerik_tests.springer_1;
-import simuchute.ch.i10a.chute.logic.Flugzeug;
 import simuchute.ch.i10a.chute.logic.SimulationObject;
+import simuchute.ch.i10a.chute.logic.Springer;
 import simuchute.ch.i10a.chute.tools.Helper;
 import simuchute.ch.i10a.chute.tools.Tools;
 
@@ -576,18 +574,15 @@ public class SimuchuteView extends FrameView {
         private final SimuchuteView view;
 
         StartSimulationTask(org.jdesktop.application.Application app, SimuchuteView view) {
-            // Runs on the EDT.  Copy GUI state that
-            // doInBackground() depends on from parameters
-            // to StartSimulationTask fields, here.
             super(app);
             backupApp = app;
             this.view = view;
         }
-
+        // Wir verschieben die Simulation in den Hintergrund, damit die Berechnungen nicht auf dem Event Dispatch Thread laufen.
         @Override
         protected Object doInBackground() {
 
-            // validierungen, damit nur korrekte werte übergeben werten
+            // validierungen, damit nur korrekte Werte übergeben werten
             if (!Helper.isDouble(view.flightSpeedValue.getText())) {
                 JOptionPane.showMessageDialog(null, "Der Wert im Feld Fluggeschwindigkeit muss eine Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
                 return null;
@@ -606,7 +601,7 @@ public class SimuchuteView extends FrameView {
                 JOptionPane.showMessageDialog(null, "Der Wert im Feld Gewicht Springer muss eine ganze Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
-           if (!Helper.isInteger(view.jumperAreaValue.getText())) {
+           if (!Helper.isDouble(view.jumperAreaValue.getText())) {
                 JOptionPane.showMessageDialog(null, "Der Wert im Feld Fläche Springer muss eine Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
@@ -634,118 +629,52 @@ public class SimuchuteView extends FrameView {
             sim.setSpringerFlaeche(new Double(view.jumperAreaValue.getText()));
             sim.setLuftDichte(new Double(view.airDensityValue.getText()));
             sim.setTOeffnen(new Double(view.timeWhenToOpenValue.getText()));
+            // statische Anfangswerte, die wir nicht dynamisch haben wollen.
+            sim.setSpringerFlaecheStart(0.5);
+            sim.setTOeffnen(2);
+            sim.setTOffen(69);
+            sim.setSchrittweite(0.1);
+            sim.setTAnfang(0);
+            sim.setTEnde(1000);
+            sim.setLandePunkt(4000);
+            sim.setSchrittweiteResult(0.1);
+            sim.setCwStart(0.5);
+            sim.setCwEnde(3.0);
 
-            Flugzeug flugzeug = new Flugzeug();
-            double[] startKO = {0, 0};
-            springer_1 springer = new springer_1();
+            // Flugzeug wird erstellt und Flugbahn berechnet.
+            //Flugzeug flugzeug = new Flugzeug();
+            //simulationobject = flugzeug.calcFlugbahn(simulationobject);
+           // Springer Object erstellen und mit Werten abfüllen
+            Springer springer = new Springer(sim);
+
+            // Flugbahn etc berechnen
+            springer.calcSpringer();
+
+            // Object mit den berechneten Werten abholen,
+            sim = springer.getFlugbahnSpringer();
+
+            // Test Print, Springerflugbahn
+            Tools.printArray2D(sim.getResult());
+
+
+        // Werte anzeigen nach Berechnen
+        System.out.println(" Neuer Abspringpunkt : " + sim.getResultAbsprungPunkt());
+        System.out.println(" Maximale Geschwindigkeit : " + sim.getMaxSpringerGeschwindigkeit());
+        System.out.println(" Springer Gewicht : " + sim.getSpringerGewicht());
+        System.out.println(" Springer Fläche Start : " + sim.getSpringerFlaecheStart());
+        System.out.println(" Springer Fläche Ende (Berechnet): " + sim.getSpringerFlaeche());
+        System.out.println(" Springer Fläche Ende (Gesetzter Wert): " + sim.getParachuteArea());
+        System.out.println(" Springer Gewicht : " + sim.getSpringerGewicht());
+        System.out.println(" Fallschirm wird geöffnet bei : " + sim.getTOffen());
+        System.out.println(" Fallschirm öffnen dauert : " + sim.getTOeffnen());
+        System.out.println(" CW Start : " + sim.getCwStart());
+        System.out.println(" CW Ende : " + sim.getCwEnde());
+        System.out.println(" Springer End Geschwindigkeit : " + sim.getSpringerEndGeschwindigkeit());
+        System.out.println(" Springer Flugzeit : " + sim.getSpringerFlugzeit());
+
+
             view.startButton.setEnabled(false);
             view.calcLabel.setVisible(true);
-            //double t0, double t1, double tn, double tAnfang, double[] yAnfang, double h
-            /** z[0] = x-Komponente des Positionsvektors        **/
-            /** z[1] = y-Komponente des Positionsvektors        **/
-            /** z[2] = x-Komponente des Geschwindigkeitsvektors **/
-            /** z[3] = y-Komponente des Geschwindigkeitsvektors **/
-            // t0: erster  Zeitpunkt der Tabelle tTable
-            // t1: zweiter Zeitpunkt der Tabelle tTable
-            // tn: letzter Zeitpunkt der Tabelle tTable
-            double[] yAnfang = {100, 1000, 5, -5};
-            //Tools.printArray2D(springer.fTable(0, 1, 1000, 0, yAnfang, 1));
-            double[][] result = springer.fTable(0, 0.01, 1000, 0, yAnfang, 0.01);
-            double KoNull = 0;
-            int n = result.length;
-
-            for (int i = 0; i < n; i++) {
-
-                if (result[i][1] <= 0) {
-
-                    System.out.println("End Resultat: " + result[i][0] + " " + result[i][1]);
-                    KoNull = result[i][0];
-                    i = n;
-
-                }
-            }
-
-            if (KoNull != 110) {
-
-                yAnfang[0] = yAnfang[0] - (KoNull - 110);
-                System.out.println(yAnfang[0]);
-                result = springer.fTable(0, 0.01, 1000, 0, yAnfang, 0.01);
-
-                for (int i = 0; i < n; i++) {
-
-                    if (result[i][1] <= 0) {
-
-                        System.out.println("End Resultat: " + result[i][0] + " " + result[i][1]);
-                        System.out.println(yAnfang[0]);
-                        KoNull = result[i][0];
-                        i = n;
-
-                    }
-                }
-            }
-
-            SimulationObject simulationObject = new SimulationObject();
-
-
-            n = result.length;
-
-
-            int o = 0;
-            for (int i = 0; i < n; i++) {
-
-
-                if (result[i][1] <= 0) {
-                } else {
-                    o++;
-                }
-            }
-            double[][] resultnew = new double[o][4];
-            for (int i = 0; i < n; i++) {
-
-
-                if (result[i][1] <= 0) {
-                    o++;
-
-                } else {
-
-                    resultnew[i][0] = result[i][0];
-                    resultnew[i][1] = result[i][1];
-                    resultnew[i][2] = result[i][2];
-                    resultnew[i][3] = result[i][3];
-
-                }
-            }
-
-            System.out.println(" NEUES ARRAYY                      NEU ARRAY");
-            Tools.printArray2D(resultnew);
-            view.calcLabel.setText("Berechne Flugbahn.... OK!!, starte Simulation");
-
-            simulationObject.setFlugbahn(resultnew);
-            currentPositionLabel.setVisible(true);
-            currentPositionLabelX.setVisible(true);
-            currentPositionLabelY.setVisible(true);
-            currentPositionValueX.setVisible(true);
-            currentPositionValueY.setVisible(true);
-            Point resetCoords = jumper.getLocation();
-            double resetX = resetCoords.getX();
-            double resetY = resetCoords.getY();
-            for (int i = resultnew.length-1; i >= 0; i--) {
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException ie) {
-                    return null;
-                }
-                plane.setVisible(true);
-                jumper.setVisible(true);
-                plane.setLocation(i, 20);
-                Point newLocation = new Point();
-                newLocation.setLocation(resetX + resultnew[i][0],resetY + resultnew[i][1]);
-                jumper.setLocation(newLocation.getLocation());
-                currentPositionValueX.setText(new Double(newLocation.getX()).toString());
-                currentPositionValueY.setText(new Double(newLocation.getY()).toString());
-                //            currentPositionValueX.setText(new Double(resetX).toString());
-            //currentPositionValueY.setText(new Double(resetY).toString());
-            }
             view.startButton.setEnabled(true);
             return null;
         }
