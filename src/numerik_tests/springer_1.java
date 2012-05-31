@@ -14,8 +14,10 @@ public class springer_1 extends linalg4_4
 // Zugang zu  Methoden aus der Linearen Algebra
 {
 double r = 0.002;
-double g = 10;
-double m = 20;
+double g = 9.81;
+double m = 80;
+double cw = 0.5;
+double flaeche = 0.5;
 /***********************************************************************/
 /* Funktionen zur Definition  von Differentialgleichungen z'=w(t,z)    */
 /*            f�r Funktion z=f(t)                                      */
@@ -39,7 +41,7 @@ double m = 20;
 
         /** Systemgr�ssen **/
         double g = 10;        // Gravitations Beschleunigung
-        double r = 0.002;     // Reibungskoeffizient
+        //double r = 0.002;     // Reibungskoeffizient
 
         /** Einflussgr�ssen **/
         /** Funktion wind **/
@@ -109,10 +111,24 @@ double m = 20;
         for (i=1;  i<=n; i++)
         {
 
+             if(t >= 20 && t <= 22){
 
+                cw = cw + 0.2;
+                r = cw * 0.5 * 1.2 * flaeche;
+                flaeche = flaeche + 0.5;
+
+                System.out.print("Widerstand: " + r + "Fläche: " + flaeche + " " + " CW: " + cw + " ");
+                //r = r + 0.0005;
+              // System.out.print("Widerstand: " + r + " ");
+
+            }
+             else{
+                 r = cw * 0.5 * 1.2 * flaeche;
+                 System.out.print("Widerstand: " + r + "Fläche: " + flaeche + " " + " CW: " + cw + " ");
+             }
              if(t > 10 && t < 20){
 
-                r = r + 0.0005;
+                r = r + 0.05;
                 System.out.println("Widerstand: " + r + " Zeit " + t);
             }
 
