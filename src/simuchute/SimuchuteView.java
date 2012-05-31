@@ -17,9 +17,9 @@ import javax.swing.JDialog;
 import javax.swing.Timer;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import simuchute.ch.i10a.chute.logic.Flugzeug;
 import simuchute.ch.i10a.chute.logic.SimulationObject;
 import simuchute.ch.i10a.chute.logic.Springer;
+import simuchute.ch.i10a.chute.threads.ChuteRunnable;
 import simuchute.ch.i10a.chute.tools.Helper;
 import simuchute.ch.i10a.chute.tools.Tools;
 
@@ -726,14 +726,11 @@ public class SimuchuteView extends FrameView {
             // Berechnungen sind Fertig, nun Simulieren wir den Sprung
             double[][] result = sim.getResult();
             Point jumperLocation = new Point();
-            Point planeLocation = new Point();
-            // Startkoordinaten von Flugzeug
-            double coordinatePerDot = (double)700/(double)5000;
-            planeLocation.setLocation(0,(700-coordinatePerDot*sim.getAltitude()));
-            plane.setLocation(planeLocation);
-            jumper.setVisible(true);
-            plane.setVisible(true);
 
+            plane.setVisible(true);
+            Thread planeThread = new Thread(new ChuteRunnable(view,sim));
+            planeThread.start();
+            planeThread.run();
 
             return null;
         }
