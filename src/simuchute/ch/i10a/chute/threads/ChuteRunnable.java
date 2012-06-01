@@ -62,4 +62,5 @@ public class ChuteRunnable implements Runnable {
         Thread jumperThread = new Thread(new ChuteRunnableTwo(this.view, this.sim));
         jumperThread.start();
     }
+
 }

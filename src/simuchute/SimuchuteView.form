@@ -59,6 +59,18 @@
                 </Constraint>
               </Constraints>
             </Component>
+            <Component class="javax.swing.JLabel" name="landingPoint">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="landingPoint.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="landingPoint.text"/>
+                <Property name="name" type="java.lang.String" value="landingPoint" noResource="true"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
+                  <JLayeredPaneConstraints x="290" y="710" width="40" height="40" layer="0" position="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
             <Component class="javax.swing.JLabel" name="plane">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="plane.icon"/>
@@ -105,80 +117,77 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jumperAreaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jumperAreaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="altitudeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="flightSpeedLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="airDensityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Group type="102" attributes="0">
-                                                                      <EmptySpace pref="35" max="32767" attributes="0"/>
-                                                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                                          <Component id="airSpeedValue" alignment="0" max="32767" attributes="1"/>
-                                                                          <Component id="flightSpeedValue" alignment="0" max="32767" attributes="1"/>
-                                                                          <Component id="parachuteAreaValue" alignment="1" max="32767" attributes="1"/>
-                                                                          <Component id="jumperWeightValue" alignment="1" max="32767" attributes="1"/>
-                                                                          <Component id="jumperAreaValue" alignment="0" pref="82" max="32767" attributes="1"/>
-                                                                          <Component id="airDensityValue" alignment="0" pref="82" max="32767" attributes="1"/>
-                                                                          <Component id="timeToOpenValue" alignment="0" min="-2" pref="90" max="-2" attributes="1"/>
-                                                                          <Component id="timeWhenToOpenValue" alignment="0" min="-2" pref="90" max="-2" attributes="1"/>
-                                                                      </Group>
-                                                                      <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                                  <Group type="102" alignment="0" attributes="0">
-                                                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                                                                      <Group type="103" groupAlignment="1" attributes="0">
-                                                                          <Component id="landingPointValue" alignment="1" min="-2" pref="151" max="-2" attributes="0"/>
-                                                                          <Component id="altitudeValue" alignment="1" min="-2" pref="151" max="-2" attributes="0"/>
-                                                                      </Group>
-                                                                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                              </Group>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Group type="103" groupAlignment="0" attributes="0">
+                                                              <Component id="altitudeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="flightSpeedLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="airDensityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                           </Group>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="windSpeedLabel" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
+                                                          <Group type="103" groupAlignment="0" attributes="0">
+                                                              <Group type="102" attributes="0">
+                                                                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                                      <Component id="airSpeedValue" alignment="0" max="32767" attributes="1"/>
+                                                                      <Component id="flightSpeedValue" alignment="0" max="32767" attributes="1"/>
+                                                                      <Component id="parachuteAreaValue" alignment="1" max="32767" attributes="1"/>
+                                                                      <Component id="jumperWeightValue" alignment="1" max="32767" attributes="1"/>
+                                                                      <Component id="jumperAreaValue" alignment="0" pref="82" max="32767" attributes="1"/>
+                                                                      <Component id="airDensityValue" alignment="0" pref="82" max="32767" attributes="1"/>
+                                                                      <Component id="timeToOpenValue" alignment="0" min="-2" pref="90" max="-2" attributes="1"/>
+                                                                      <Component id="timeWhenToOpenValue" alignment="0" min="-2" pref="90" max="-2" attributes="1"/>
+                                                                  </Group>
+                                                                  <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                                                              </Group>
+                                                              <Group type="102" alignment="0" attributes="0">
+                                                                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                                      <Component id="landingPointValue" alignment="1" min="-2" pref="151" max="-2" attributes="0"/>
+                                                                      <Component id="altitudeValue" alignment="1" min="-2" pref="151" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                                                              </Group>
                                                           </Group>
                                                       </Group>
                                                       <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="parachuteAreaLabel" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="253" max="-2" attributes="0"/>
+                                                          <Component id="windSpeedLabel" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jumpgerWeightLabel" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="252" max="-2" attributes="0"/>
+                                                      <Component id="parachuteAreaLabel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="253" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="flightSpeedValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="altitudeValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="airSpeedValueLabel" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="airSpeedValueLabel1" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="airDensityValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jumperAreaValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jumperWeightValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="timeToOpenValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="timeWhenToOpenValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="landingPointValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jumpgerWeightLabel" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="252" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                                           </Group>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="flightSpeedValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="altitudeValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="airSpeedValueLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="airSpeedValueLabel1" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="airDensityValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jumperAreaValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jumperWeightValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="timeToOpenValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="timeWhenToOpenValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="landingPointValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">

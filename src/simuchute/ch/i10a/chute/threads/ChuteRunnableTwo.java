@@ -44,6 +44,7 @@ public class ChuteRunnableTwo implements Runnable {
             }
             i++;
         } while (jumperLocation.getY() > 2);
+        enableGui();
     }
 
     /**
@@ -55,5 +56,17 @@ public class ChuteRunnableTwo implements Runnable {
         this.view.jumper.setVisible(true);
         this.view.jumper.setLocation(location);
 
+    }
+    private void enableGui() {
+        this.view.airDensityValue.setEnabled(true);
+        this.view.airSpeedValue.setEnabled(true);
+        this.view.altitudeValue.setEnabled(true);
+        this.view.flightSpeedValue.setEnabled(true);
+        this.view.timeToOpenValue.setEnabled(true);
+        this.view.timeWhenToOpenValue.setEnabled(true);
+        this.view.jumperAreaValue.setEnabled(true);
+        this.view.parachuteAreaValue.setEnabled(true);
+        this.view.landingPoint.setEnabled(true);
+        this.view.jumperWeightValue.setEnabled(true);
     }
 }
