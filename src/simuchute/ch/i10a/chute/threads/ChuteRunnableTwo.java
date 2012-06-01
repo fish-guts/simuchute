@@ -28,6 +28,11 @@ public class ChuteRunnableTwo implements Runnable {
         // Startkoordinaten von Flugzeug
         int i = 0;
         double result[][] = this.sim.getResult();
+        this.view.currentPositionLabel.setVisible(true);
+        this.view.currentPositionLabelX.setVisible(true);
+        this.view.currentPositionLabelY.setVisible(true);
+        this.view.currentPositionValueX.setVisible(true);
+        this.view.currentPositionValueY.setVisible(true);
         do {
             try {
                 Thread.sleep(100);
@@ -40,6 +45,7 @@ public class ChuteRunnableTwo implements Runnable {
             i++;
         } while (jumperLocation.getY() > 2);
     }
+
     /**
      * moveJumper: Bewegt die Springergrafik auf dem GUI
      * @param location: Point Objekt, welches die Koordinaten beinhaltet, an welches

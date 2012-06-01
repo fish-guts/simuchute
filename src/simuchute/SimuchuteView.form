@@ -55,7 +55,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
-                  <JLayeredPaneConstraints x="240" y="180" width="-1" height="-1" layer="0" position="-1"/>
+                  <JLayeredPaneConstraints x="130" y="300" width="-1" height="-1" layer="0" position="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -79,7 +79,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
-                  <JLayeredPaneConstraints x="10" y="0" width="1010" height="740" layer="0" position="-1"/>
+                  <JLayeredPaneConstraints x="10" y="0" width="1010" height="760" layer="0" position="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -135,7 +135,10 @@
                                                                   </Group>
                                                                   <Group type="102" alignment="0" attributes="0">
                                                                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                                                                      <Component id="altitudeValue" min="-2" pref="151" max="-2" attributes="0"/>
+                                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                                          <Component id="landingPointValue" alignment="1" min="-2" pref="151" max="-2" attributes="0"/>
+                                                                          <Component id="altitudeValue" alignment="1" min="-2" pref="151" max="-2" attributes="0"/>
+                                                                      </Group>
                                                                       <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                                                                   </Group>
                                                               </Group>
@@ -168,13 +171,14 @@
                                                           <Component id="jumperWeightValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                           <Component id="timeToOpenValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                           <Component id="timeWhenToOpenValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="landingPointValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -201,24 +205,21 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="startButton" min="-2" pref="115" max="-2" attributes="1"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="tempPosX" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="tempPosY" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="calcLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="calcLabel" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="364" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="336" max="-2" attributes="0"/>
                           </Group>
                           <Component id="timeToOpenLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="timeWhenToOpenLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="landingPointLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="430" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -295,38 +296,46 @@
                           <Component id="timeWhenToOpenValue" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="timeWhenToOpenValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="tempPosX" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tempPosY" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="startButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="calcLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                      <Component id="currentPositionLabelX" min="-2" pref="14" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="currentPositionLabelY" min="-2" pref="14" max="-2" attributes="0"/>
+                                  <Component id="landingPointLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="landingPointValue" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="startButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="calcLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                              <Component id="currentPositionLabelX" min="-2" pref="14" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="currentPositionLabelY" min="-2" pref="14" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                              <Component id="currentPositionValueX" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                              <Component id="currentPositionValueY" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace pref="22" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                      <Component id="currentPositionValueX" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      <Component id="currentPositionValueY" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="currentPositionLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="landingPointValueLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="currentPositionLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -553,16 +562,28 @@
                 <Property name="name" type="java.lang.String" value="timeWhenToOpenValueLabel" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="tempPosX">
+            <Component class="javax.swing.JLabel" name="landingPointLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="tempPosX.text"/>
-                <Property name="name" type="java.lang.String" value="tempPosX" noResource="true"/>
+                <Property name="text" type="java.lang.String" resourceKey="landingPointLabel.text"/>
+                <Property name="name" type="java.lang.String" value="landingPointLabel" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="tempPosY">
+            <Component class="javax.swing.JSlider" name="landingPointValue">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="tempPosY.text"/>
-                <Property name="name" type="java.lang.String" value="tempPosY" noResource="true"/>
+                <Property name="maximum" type="int" value="1010"/>
+                <Property name="paintTicks" type="boolean" value="true"/>
+                <Property name="snapToTicks" type="boolean" value="true"/>
+                <Property name="value" type="int" value="300"/>
+                <Property name="name" type="java.lang.String" value="landingPointValue" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="landingPointValueStateChanged"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="landingPointValueLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="landingPointValueLabel.text"/>
+                <Property name="name" type="java.lang.String" value="landingPointValueLabel" noResource="true"/>
               </Properties>
             </Component>
           </SubComponents>
