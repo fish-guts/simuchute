@@ -9,7 +9,7 @@ import simuchute.SimuchuteView;
 import simuchute.ch.i10a.chute.logic.SimulationObject;
 
 /**
- *
+ * Erste Runnable Klasse für den Flugzeug-Thread. 
  * @author Fish-Guts
  */
 public class ChuteRunnable implements Runnable {
@@ -35,11 +35,11 @@ public class ChuteRunnable implements Runnable {
         int j = 0;
         do {
             try {
-                Thread.sleep(1);
+                Thread.sleep(1); // Schrittweite für das Flugzeug. 
                 planeLocation.setLocation((i * this.sim.getPlaneSpeed() / 1000), yCoord);
                 if ((planeLocation.getX() > sim.getResultAbsprungPunkt() / 10) && (go4Jump == false)) {
                     go4Jump = true;
-                    initNewThread();
+                    initNewThread(); // Sobald das Flugzeug am Absprungpunkt ist, starten wir den neuen Thread. 
             }
                 movePlane(planeLocation);
             } catch (Exception e) {
@@ -54,12 +54,12 @@ public class ChuteRunnable implements Runnable {
     public void moveJumper(Point location) {
         this.view.jumper.setLocation(location);
     }
+    /**
+     * initNewThread()
+     * Legt einen neuen Thread für den Springer an. 
+     */
     public void initNewThread() {
         Thread jumperThread = new Thread(new ChuteRunnableTwo(this.view, this.sim));
         jumperThread.start();
-    }
-
-    public Point getCurrentPlaneLocation() {
-        return new Point();
     }
 }

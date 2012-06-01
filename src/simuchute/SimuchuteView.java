@@ -20,11 +20,12 @@ import javax.swing.JOptionPane;
 import simuchute.ch.i10a.chute.logic.SimulationObject;
 import simuchute.ch.i10a.chute.logic.Springer;
 import simuchute.ch.i10a.chute.threads.ChuteRunnable;
-import simuchute.ch.i10a.chute.tools.Helper;
 import simuchute.ch.i10a.chute.tools.Tools;
 
+
 /**
- * The application's main frame.
+ * Das Hauptfenster der Applikation.
+ * @author Severin Mueller
  */
 public class SimuchuteView extends FrameView {
 
@@ -600,7 +601,7 @@ public class SimuchuteView extends FrameView {
         String str = spinValue.toString() + " m";
         altitudeValueLabel.setText(str);
 }//GEN-LAST:event_altitudeValueStateChanged
-    // updaten wenn Wert verändert wird.     // updaten wenn Wert verändert wird. sm
+    // updaten wenn Wert verändert wird.   sm
 
     @Action
     public Task startSimulation() {
@@ -624,37 +625,37 @@ public class SimuchuteView extends FrameView {
         protected Object doInBackground() {
 
             // validierungen, damit nur korrekte Werte übergeben werten
-            if (!Helper.isDouble(view.flightSpeedValue.getText())) {
+            if (!Tools.isDouble(view.flightSpeedValue.getText())) {
                 JOptionPane.showMessageDialog(null, "Der Wert im Feld Fluggeschwindigkeit muss eine Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
-            if (!Helper.isDouble(view.airSpeedValue.getText())) {
+            if (!Tools.isDouble(view.airSpeedValue.getText())) {
                 JOptionPane.showMessageDialog(null, "Der Wert im Feld Windgeschwindkigkeit muss eine Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
 
 
-            if (!Helper.isDouble(view.parachuteAreaValue.getText())) {
+            if (!Tools.isDouble(view.parachuteAreaValue.getText())) {
                 JOptionPane.showMessageDialog(null, "Der Wert im Feld Fallschirmfläche muss eine Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
-            if (!Helper.isInteger(view.jumperWeightValue.getText())) {
+            if (!Tools.isInteger(view.jumperWeightValue.getText())) {
                 JOptionPane.showMessageDialog(null, "Der Wert im Feld Gewicht Springer muss eine ganze Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
-            if (!Helper.isDouble(view.jumperAreaValue.getText())) {
+            if (!Tools.isDouble(view.jumperAreaValue.getText())) {
                 JOptionPane.showMessageDialog(null, "Der Wert im Feld Fläche Springer muss eine Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
-            if (!Helper.isDouble(view.airDensityValue.getText())) {
+            if (!Tools.isDouble(view.airDensityValue.getText())) {
                 JOptionPane.showMessageDialog(null, "Der Wert im Feld Luftdichte muss eine Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
-            if (!Helper.isInteger(view.timeToOpenValue.getText())) {
+            if (!Tools.isInteger(view.timeToOpenValue.getText())) {
                 JOptionPane.showMessageDialog(null, "Der Wert im Feld Fallschirmöffnungszeit muss eine Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
-            if (!Helper.isInteger(view.timeWhenToOpenValue.getText())) {
+            if (!Tools.isInteger(view.timeWhenToOpenValue.getText())) {
                 JOptionPane.showMessageDialog(null, "Der Wert im Feld Zeitpunkt Öffnung muss eine Zahl sein", "Fehler", JOptionPane.ERROR_MESSAGE);
                 return null;
             }

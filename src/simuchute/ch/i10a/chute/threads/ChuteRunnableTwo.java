@@ -1,13 +1,11 @@
 package simuchute.ch.i10a.chute.threads;
 
 import java.awt.Point;
-import java.util.Timer;
-import java.util.TimerTask;
 import simuchute.SimuchuteView;
 import simuchute.ch.i10a.chute.logic.SimulationObject;
 
 /**
- *
+ * Zweite Runnable Klasse für den Springer-Thread
  * @author Fish-Guts
  */
 public class ChuteRunnableTwo implements Runnable {
