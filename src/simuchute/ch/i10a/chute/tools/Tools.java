@@ -2,8 +2,16 @@ package simuchute.ch.i10a.chute.tools;
 
 import simuchute.SimuchuteView;
 
+/**
+ * Klasse für Helferlein
+ * @author Patrice Keusch / Severin Mueller
+ */
 public class Tools {
 
+    /**
+     *
+     * @param array
+     */
     public static void printArray(double[] array) {
 
         int length = array.length;
@@ -16,6 +24,10 @@ public class Tools {
         }
     }
 
+    /**
+     *
+     * @param array
+     */
     public static void printArray2D(double[][] array) {
 
         int length = array.length;
@@ -32,6 +44,11 @@ public class Tools {
 
     }
 
+    /**
+     *
+     * @param view
+     * @param array
+     */
     public static void printArrayInTextArea(SimuchuteView view, double[][] array) {
         String title = "Start";
         String tmp = "";
@@ -48,6 +65,11 @@ public class Tools {
         }
 
     }
+    /**
+     *
+     * @param input
+     * @return
+     */
     public static boolean isInteger(String input) {
         try {
             Integer.parseInt(input);
@@ -56,6 +78,11 @@ public class Tools {
             return false;
         }
     }
+    /**
+     *
+     * @param input
+     * @return
+     */
     public static boolean isDouble(String input) {
         try {
             Double.parseDouble(input);
