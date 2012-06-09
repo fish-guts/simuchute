@@ -10,17 +10,13 @@ import simuchute.ch.i10a.chute.tools.Tools;
 /***********************************************************************/
 // Zugang zu  Methoden aus der Linearen Algebra
 
-public class Springer extends linalg4_4
-
-
-{
+public class Springer extends linalg4_4{
 
 // Variablen deklarieren
 private double r;
 private double g;
 private double cw;
 private double springerFlaeche;
-private double flaeche;
 private double differenzFlaeche;
 private double anzahlSchritteBeimOeffnen;
 private double flaecheAddierenBeimOeffnen;
@@ -65,12 +61,14 @@ private SimulationObject simulationObject;
 
     public void calcSpringer(){
 
-        // {xStart-Koordinate, yStart-Koordinate (Flüghöhe), Flugzeuggeschwindigkeit = Springer Startgeschwindigkeit, yStart Geschwindigkeit Springer, Laufzeit}
+        // {xStart-Koordinate, yStart-Koordinate (Flüghöhe), Flugzeuggeschwindigkeit = Springer Startgeschwindigkeit,
+        //yStart Geschwindigkeit Springer, Laufzeit}
         double[] yAnfang = {0, simulationObject.getAltitude(), simulationObject.getPlaneSpeed(),0,0};
 
         // Berechnungen starten, erste drei Werte für TabellenAusgabe: tStart, tSchrittweite, tEnde,
-        // Danach xStart Koordinate, yAnfang Werte (siehe oben), Genauigkeit der Berechnungen.
-        double[][] result = fTable(0, simulationObject.getSchrittweiteResult(), simulationObject.getTEnde(), 0, yAnfang, simulationObject.getSchrittweiteH());
+        // Danach tStart, yAnfang Werte (siehe oben), Genauigkeit der Berechnungen.
+        double[][] result = fTable(0, simulationObject.getSchrittweiteResult(), simulationObject.getTEnde(),
+                0, yAnfang, simulationObject.getSchrittweiteH());
         // Variable für Lösungssuche des Landepunktes
         double KoNull =0;
 
@@ -233,13 +231,11 @@ private SimulationObject simulationObject;
     public double[] wind (double t, double[] z)
     {
         double[]res = new double[4];
+    
+        res[0] =  simulationObject.getWindSpeed();
+        res[1] =  0;
 
-        if(z[1] < 5000){
-            res[0] =  simulationObject.getWindSpeed();
-            res[1] =  0;
-
-        }
-        
+        // Höhe z[1] wird jeweils ausgelesen und verglichen. Je nach Höhe wird ein anderer Wind gesetzt.
         if(z[1] < 4000){
             res[0] = 10;
             res[1] = 0;
@@ -327,14 +323,14 @@ private SimulationObject simulationObject;
 
             // Widerstand berechnen und abspeichern in r
             calcWiderstand(t);
- 
+
+            //K1 - RK4-Verfahren
             ka = w(t,y);
-            //ya = y + h/2*ka;
             ya = addVector(y, multScalarVector(h/2, ka));
             ta = t + h/2;
 
+            //K2 - RK4-Verfahren
             kb = w(ta,ya);
-            //yb = y + h/2*kb;
             yb = addVector(y, multScalarVector(h/2, kb));
             tb = t + h/2;
 
@@ -361,7 +357,7 @@ private SimulationObject simulationObject;
 /* Berechnungen von Wertetabellen                                      */
 /***********************************************************************/
 
-    /** erstellen einer gleichabst�ndigen Tabelle t[] = {t0, t1, ... tn} */
+    /** erstellen einer gleichabständigen Tabelle t[] = {t0, t1, ... tn} */
 
     public double[] tTable  ( double t0, double t1, double tn)
     {
@@ -377,7 +373,7 @@ private SimulationObject simulationObject;
     }
 
     /** erstellen einer Wertetabelle  y=f(t) f�r die
-        L�sung des Anfangswertproblems dy/dt=w(t,y), f(tAnfang)=yAnfang   */
+        Lösung des Anfangswertproblems dy/dt=w(t,y), f(tAnfang)=yAnfang   */
 
     public double[][] yTable  ( double[] t, double tAnfang,double[] yAnfang, double h)
     {
@@ -396,15 +392,6 @@ private SimulationObject simulationObject;
 
          y[i] = RK4 (t[i], t[i-1], y[i-1], h);
 
-
-        }
-
-        for (i=0; i<=n-1; i++)
-        {
-         // System.out.print (i+"\t"+t[i]+"\t");
-         // for (int j=0; j<m; j++)
-         // System.out.print (+y[i][j]+"\t");
-         // System.out.println();
         }
 
         return y;
@@ -413,7 +400,7 @@ private SimulationObject simulationObject;
 
     /** erstellen einer Wertetabelle t --> y=f(t)
         mit einer gleichabst�ndigen Tabelle t[] = {t0, t1, ... tn}
-        f�r die L�sung des Anfangswertproblems dy/dt=w(t,y), f(tAnfang)=yAnfang   */
+        für die Lösung des Anfangswertproblems dy/dt=w(t,y), f(tAnfang)=yAnfang   */
 
     public double[][] fTable  ( double t0, double t1, double tn, double tAnfang, double[] yAnfang, double h)
     {
@@ -427,14 +414,12 @@ private SimulationObject simulationObject;
 
         double[][]y =  yTable  (t, tAnfang, yAnfang, h);
 
-  
-
         // Laufzeit den Werten zu ordnen
         for (int i=0; i<=n-1; i++)
         {
 
             y[i][4] = t[i];
-            
+       
         }
       for (int i=0; i<=n-1; i++)
         {   System.out.print (i+"\t"+t[i]+"\t");
