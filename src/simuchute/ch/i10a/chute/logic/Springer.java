@@ -215,14 +215,15 @@ private SimulationObject simulationObject;
         double uBetrag;
         u[0] =  z[2]-wind(t,z)[0];
         u[1] =  z[3]-wind(t,z)[1];
-        uBetrag = Math.sqrt(u[0]*u[0] +  u[1]*u[1]);
+        
 
         /** Berechnung derAbleitungen der Zustandsgr�ssen **/
         res[0] =  z[2];
         res[1] =  z[3];
-
+        
+        uBetrag = Math.sqrt(u[0]*u[0] +  u[1]*u[1]);
         res[2] =      - r * (u[0]*uBetrag); // Ableitung der Geschwindigkeit ergibt Beschleunigung
-        res[3] =  - g - (r * (u[1]*uBetrag))/simulationObject.getSpringerGewicht(); // Ableitung der Geschwindigkeit ergibt Beschleunigung
+        res[3] =  - g - (r * (u[1]*uBetrag))/simulationObject.getSpringerGewicht(); 
         
         return res;
     }
