@@ -51,11 +51,14 @@
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="jumper.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="jumper.text"/>
+                <Property name="verticalAlignment" type="int" value="1"/>
+                <Property name="alignmentY" type="float" value="5.0"/>
+                <Property name="iconTextGap" type="int" value="0"/>
                 <Property name="name" type="java.lang.String" value="jumper" noResource="true"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
-                  <JLayeredPaneConstraints x="130" y="300" width="-1" height="-1" layer="0" position="-1"/>
+                  <JLayeredPaneConstraints x="180" y="98" width="38" height="40" layer="0" position="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -399,8 +402,8 @@
             </Component>
             <Component class="javax.swing.JSlider" name="altitudeValue">
               <Properties>
-                <Property name="maximum" type="int" value="5000"/>
-                <Property name="minimum" type="int" value="1200"/>
+                <Property name="maximum" type="int" value="6000"/>
+                <Property name="minimum" type="int" value="4000"/>
                 <Property name="paintTicks" type="boolean" value="true"/>
                 <Property name="snapToTicks" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="altitudeValue" noResource="true"/>

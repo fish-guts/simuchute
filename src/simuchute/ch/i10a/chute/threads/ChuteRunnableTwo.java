@@ -1,6 +1,9 @@
 package simuchute.ch.i10a.chute.threads;
 
 import java.awt.Point;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import simuchute.SimuchuteView;
 import simuchute.ch.i10a.chute.logic.SimulationObject;
 
@@ -23,6 +26,7 @@ public class ChuteRunnableTwo implements Runnable {
      */
     public void run() {
         Point jumperLocation = new Point();
+        boolean changed = false;
         double coordinatePerDot = (double) 700 / (double) 5000;
         double yCoord = (700 - coordinatePerDot * sim.getAltitude());
         // Startkoordinaten von Flugzeug
@@ -33,9 +37,15 @@ public class ChuteRunnableTwo implements Runnable {
         this.view.currentPositionLabelY.setVisible(true);
         this.view.currentPositionValueX.setVisible(true);
         this.view.currentPositionValueY.setVisible(true);
+        double changeAt = (sim.getTOffen() + sim.getParachuteTimeToOpen());
         do {
             try {
                 Thread.sleep(100);
+                if((result[i][4]>=(changeAt)) && (changed==false)) {
+                    String imageName = "C:\\Users\\chsmrs\\Desktop\\simuchute\\src\\simuchute\\ch\\i10a\\chute\\ui\\resources\\jumper.png";
+                    this.view.jumper.setIcon(new ImageIcon(imageName));
+                    changed = true;
+                }
                 jumperLocation.setLocation((result[i][0] / 10), 700 - coordinatePerDot * result[i][1]);
                 moveJumper(jumperLocation);
                 this.view.currentPositionValueX.setText(new Double(result[i][0] / 10).toString());

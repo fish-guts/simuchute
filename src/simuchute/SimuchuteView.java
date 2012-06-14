@@ -35,7 +35,7 @@ public class SimuchuteView extends FrameView {
         initComponents();
         jumper.setVisible(false);
         plane.setVisible(false);
-        altitudeValueLabel.setText("1200 m");
+        altitudeValueLabel.setText("4000 m");
         currentPositionLabel.setVisible(false);
         currentPositionLabelX.setVisible(false);
         currentPositionLabelY.setVisible(false);
@@ -179,8 +179,11 @@ public class SimuchuteView extends FrameView {
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(simuchute.SimuchuteApp.class).getContext().getResourceMap(SimuchuteView.class);
         jumper.setIcon(resourceMap.getIcon("jumper.icon")); // NOI18N
         jumper.setText(resourceMap.getString("jumper.text")); // NOI18N
+        jumper.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jumper.setAlignmentY(5.0F);
+        jumper.setIconTextGap(0);
         jumper.setName("jumper"); // NOI18N
-        jumper.setBounds(130, 300, 38, 38);
+        jumper.setBounds(180, 98, 38, 40);
         jLayeredPane1.add(jumper, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         landingPoint.setIcon(resourceMap.getIcon("landingPoint.icon")); // NOI18N
@@ -227,8 +230,8 @@ public class SimuchuteView extends FrameView {
         altitudeValueLabel.setText(resourceMap.getString("altitudeValueLabel.text")); // NOI18N
         altitudeValueLabel.setName("altitudeValueLabel"); // NOI18N
 
-        altitudeValue.setMaximum(5000);
-        altitudeValue.setMinimum(1200);
+        altitudeValue.setMaximum(6000);
+        altitudeValue.setMinimum(4000);
         altitudeValue.setPaintTicks(true);
         altitudeValue.setSnapToTicks(true);
         altitudeValue.setName("altitudeValue"); // NOI18N

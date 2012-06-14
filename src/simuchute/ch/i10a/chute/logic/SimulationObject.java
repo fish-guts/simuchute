@@ -58,7 +58,6 @@ public class SimulationObject {
     public double getSpringerFlaecheStart(){
         return springerFlaecheStart;
     }
-
     public double getSchrittweiteResult(){
         return schrittweiteResult;
     }
