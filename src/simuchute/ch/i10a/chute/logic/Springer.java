@@ -4,7 +4,8 @@ import simuchute.ch.i10a.chute.tools.Tools;
 
 /***********************************************************************/
 /* Anfangswertprobleme (Differentialgleichungen)                       */
-/* @author   Patrice Keusch                                            */
+/* @author   Albert Heuberger                                          */
+/* @modifiziert und erweitert von Patrice Keusch                       */
 /* @version  26.05.2012                                                */
 /*                                                                     */
 /***********************************************************************/
