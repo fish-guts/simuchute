@@ -37,7 +37,9 @@ public class ChuteRunnableTwo implements Runnable {
         this.view.currentPositionLabelY.setVisible(true);
         this.view.currentPositionValueX.setVisible(true);
         this.view.currentPositionValueY.setVisible(true);
-        double changeAt = (sim.getTOffen() + sim.getParachuteTimeToOpen());
+        this.view.currentSpeedLabel.setVisible(true);
+        this.view.currentSpeedValue.setVisible(true);
+        double changeAt = sim.getTOffen();
         do {
             try {
                 Thread.sleep(100);
@@ -50,11 +52,14 @@ public class ChuteRunnableTwo implements Runnable {
                 moveJumper(jumperLocation);
                 this.view.currentPositionValueX.setText(new Double(result[i][0] / 10).toString());
                 this.view.currentPositionValueY.setText(new Double(700 - coordinatePerDot * result[i][1]).toString());
+                this.view.currentSpeedValue.setText(new Double(result[i][3]).toString() + " m/s");
+                if(jumperLocation.getY() >=699.5) {
+                    enableGui();
+                }
             } catch (Exception e) {
             }
             i++;
-        } while (jumperLocation.getY() > 2);
-        enableGui();
+        } while (jumperLocation.getY() <= 700);
     }
 
     /**
@@ -78,5 +83,6 @@ public class ChuteRunnableTwo implements Runnable {
         this.view.parachuteAreaValue.setEnabled(true);
         this.view.landingPoint.setEnabled(true);
         this.view.jumperWeightValue.setEnabled(true);
+        this.view.resetButton.setEnabled(true);
     }
 }

@@ -45,7 +45,7 @@ public class ChuteRunnable implements Runnable {
             } catch (Exception e) {
             }
             i++;
-        } while (jumpFinished==false);
+        } while (planeLocation.getX()<=1200);
     }
 
     public void movePlane(Point location) {

@@ -30,9 +30,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" min="-2" pref="156" max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" min="-2" pref="135" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jLayeredPane1" alignment="0" pref="747" max="32767" attributes="0"/>
+                      <Component id="jLayeredPane1" alignment="0" pref="751" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -208,14 +208,20 @@
                                                       <Component id="currentPositionLabel" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
                                                   </Group>
+                                                  <Component id="currentSpeedLabel" min="-2" max="-2" attributes="0"/>
                                               </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Component id="currentPositionValueY" alignment="1" min="-2" pref="79" max="-2" attributes="1"/>
                                                   <Component id="currentPositionValueX" min="-2" pref="79" max="-2" attributes="1"/>
+                                                  <Component id="currentSpeedValue" alignment="1" min="-2" pref="79" max="-2" attributes="1"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="startButton" min="-2" pref="115" max="-2" attributes="1"/>
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="resetButton" alignment="0" max="32767" attributes="1"/>
+                                                  <Component id="startButton" alignment="0" pref="115" max="32767" attributes="1"/>
+                                              </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="calcLabel" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
@@ -336,10 +342,17 @@
                                               <Component id="currentPositionValueY" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="22" max="32767" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="currentSpeedValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="currentSpeedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                      <Component id="resetButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="56" max="32767" attributes="0"/>
                                       <Component id="currentPositionLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                   </Group>
@@ -350,6 +363,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -596,6 +610,29 @@
               <Properties>
                 <Property name="text" type="java.lang.String" resourceKey="landingPointValueLabel.text"/>
                 <Property name="name" type="java.lang.String" value="landingPointValueLabel" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="resetButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="resetButton.text"/>
+                <Property name="name" type="java.lang.String" value="resetButton" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resetButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="currentSpeedLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="currentSpeedLabel.text"/>
+                <Property name="name" type="java.lang.String" value="currentSpeedLabel" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="currentSpeedValue">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="currentSpeedValue.font"/>
+                <Property name="foreground" type="java.awt.Color" resourceKey="currentSpeedValue.foreground"/>
+                <Property name="text" type="java.lang.String" resourceKey="currentSpeedValue.text"/>
+                <Property name="name" type="java.lang.String" value="currentSpeedValue" noResource="true"/>
               </Properties>
             </Component>
           </SubComponents>
