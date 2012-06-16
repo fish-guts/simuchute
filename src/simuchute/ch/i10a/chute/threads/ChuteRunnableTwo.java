@@ -40,11 +40,14 @@ public class ChuteRunnableTwo implements Runnable {
         this.view.currentSpeedLabel.setVisible(true);
         this.view.currentSpeedValue.setVisible(true);
         double changeAt = sim.getTOffen();
+        File newFile = new File("src\\simuchute\\ch\\i10a\\chute\\ui\\resources\\jumper.png");
+        String imageName = newFile.getAbsolutePath();
         do {
             try {
                 Thread.sleep(100);
                 if((result[i][4]>=(changeAt)) && (changed==false)) {
-                    String imageName = "C:\\Users\\chsmrs\\Desktop\\simuchute\\src\\simuchute\\ch\\i10a\\chute\\ui\\resources\\jumper.png";
+
+                    //String imageName = "C:\\Program Files\\simuchute\\src\\simuchute\\ch\\i10a\\chute\\ui\\resources\\jumper.png";
                     this.view.jumper.setIcon(new ImageIcon(imageName));
                     changed = true;
                 }

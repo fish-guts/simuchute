@@ -12,6 +12,7 @@ import org.jdesktop.application.Task;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
@@ -437,9 +438,7 @@ public class SimuchuteView extends FrameView {
                                                     .addComponent(currentPositionLabelX, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(currentPositionLabelY, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(23, 23, 23))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(currentPositionLabel)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                            .addComponent(currentPositionLabel)
                                             .addComponent(currentSpeedLabel))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -544,17 +543,14 @@ public class SimuchuteView extends FrameView {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(currentSpeedValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(currentSpeedLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(currentSpeedLabel)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
                                 .addComponent(resetButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                                 .addComponent(currentPositionLabel)
                                 .addGap(45, 45, 45))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(landingPointValueLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addComponent(landingPointValueLabel))
                 .addGap(14, 14, 14))
         );
 
@@ -591,7 +587,7 @@ public class SimuchuteView extends FrameView {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 751, Short.MAX_VALUE))
+                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -687,7 +683,8 @@ public class SimuchuteView extends FrameView {
         parachuteAreaValue.setEnabled(true);
         landingPoint.setEnabled(true);
         jumperWeightValue.setEnabled(true);
-        String imageName = "C:\\Users\\chsmrs\\Desktop\\simuchute\\src\\simuchute\\ch\\i10a\\chute\\ui\\resources\\jumper_no_para.png";
+        File newFile = new File("src\\simuchute\\ch\\i10a\\chute\\ui\\resources\\jumper_no_para.png");
+        String imageName = newFile.getAbsolutePath();
         jumper.setIcon(new ImageIcon(imageName));
         plane.setVisible(false);
         jumper.setVisible(false);
